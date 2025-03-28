@@ -114,4 +114,30 @@ export const projects: Project[] = [
   }
 ];
 
+export const testimonials: Testimonial[] = [
+  {
+    id: "testimonial1",
+    name: "testimonials.items.1.name",
+    position: "testimonials.items.1.position",
+    text: "testimonials.items.1.text",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    rating: 5
+  },
+  {
+    id: "testimonial2",
+    name: "testimonials.items.2.name",
+    position: "testimonials.items.2.position",
+    text: "testimonials.items.2.text",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    rating: 4.5
+  },
+  {
+    id: "testimonial3",
+    name: "testimonials.items.3.name",
+    position: "testimonials.items.3.position",
+    text: "testimonials.items.3.text",
+    image: "https://randomuser.me/api/portraits/men/62.jpg",
+    rating: 5
+  }
+];
 

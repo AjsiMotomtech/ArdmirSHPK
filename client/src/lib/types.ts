@@ -22,6 +22,14 @@ export interface Project {
   category: ProjectCategory;
 }
 
+export interface Testimonial {
+  id: string;
+  name: string;
+  position: string;
+  text: string;
+  image: string;
+  rating: number;
+}
 
 
 export interface AboutStat {
