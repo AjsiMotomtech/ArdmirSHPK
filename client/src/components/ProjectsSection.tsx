@@ -1,14 +1,21 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { projects, projectCategories } from "@/lib/data";
-import { ProjectCategory } from "@/lib/types";
+import { projectCategories } from "@/lib/data";
+import { getProjects } from "@/lib/dataService";
+import { ProjectCategory, Project } from "@/lib/types";
 
 const ProjectsSection = () => {
   const { t } = useTranslation();
-  const { ref, inView } = useIntersectionObserver({ threshold: 0.1, triggerOnce: true });
+  const { ref: sectionRef, inView } = useIntersectionObserver({ threshold: 0.1, triggerOnce: true });
   const [activeCategory, setActiveCategory] = useState<ProjectCategory | "all">("all");
+  const [projects, setProjects] = useState<Project[]>([]);
+  
+  // Load projects from data service
+  useEffect(() => {
+    setProjects(getProjects());
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -53,13 +60,13 @@ const ProjectsSection = () => {
 
   const filteredProjects = activeCategory === "all" 
     ? projects 
-    : projects.filter(project => project.category === activeCategory);
+    : projects.filter((project: Project) => project.category === activeCategory);
 
   return (
     <section id="projektet" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <motion.div 
-          ref={ref}
+          ref={sectionRef as React.LegacyRef<HTMLDivElement>}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}

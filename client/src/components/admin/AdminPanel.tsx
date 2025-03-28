@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,42 +7,63 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { projects, services, testimonials, heroSlides } from "@/lib/data";
-import { Project, Service, Testimonial, HeroSlide, ProjectCategory } from "@/lib/types";
+import { Project, Service, HeroSlide, ProjectCategory } from "@/lib/types";
 import { useToast } from "@/hooks/use-toast";
+import { 
+  getProjects, getServices, getSlides, 
+  updateProject, updateService, updateSlide
+} from "@/lib/dataService";
 
 const AdminPanel = () => {
+  const { t } = useTranslation();
   const { toast } = useToast();
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [services, setServices] = useState<Service[]>([]);
+  const [heroSlides, setHeroSlides] = useState<HeroSlide[]>([]);
+  
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
-  const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
   const [selectedSlide, setSelectedSlide] = useState<HeroSlide | null>(null);
 
   // Form states
   const [projectForm, setProjectForm] = useState<Partial<Project>>({});
   const [serviceForm, setServiceForm] = useState<Partial<Service>>({});
-  const [testimonialForm, setTestimonialForm] = useState<Partial<Testimonial>>({});
   const [slideForm, setSlideForm] = useState<Partial<HeroSlide>>({});
+
+  // Load data
+  useEffect(() => {
+    setProjects(getProjects());
+    setServices(getServices());
+    setHeroSlides(getSlides());
+  }, []);
 
   // Handle selecting an item for editing
   const handleSelectProject = (project: Project) => {
     setSelectedProject(project);
-    setProjectForm({ ...project });
+    setProjectForm({ 
+      ...project,
+      // If the title is a translation key, try to resolve it
+      title: project.title.startsWith("projects.") ? t(project.title) : project.title,
+      description: project.description.startsWith("projects.") ? t(project.description) : project.description
+    });
   };
 
   const handleSelectService = (service: Service) => {
     setSelectedService(service);
-    setServiceForm({ ...service });
-  };
-
-  const handleSelectTestimonial = (testimonial: Testimonial) => {
-    setSelectedTestimonial(testimonial);
-    setTestimonialForm({ ...testimonial });
+    setServiceForm({ 
+      ...service,
+      title: service.title.startsWith("services.") ? t(service.title) : service.title,
+      description: service.description.startsWith("services.") ? t(service.description) : service.description 
+    });
   };
 
   const handleSelectSlide = (slide: HeroSlide) => {
     setSelectedSlide(slide);
-    setSlideForm({ ...slide });
+    setSlideForm({ 
+      ...slide,
+      title: slide.title.startsWith("hero.") ? t(slide.title) : slide.title,
+      description: slide.description.startsWith("hero.") ? t(slide.description) : slide.description 
+    });
   };
 
   // Handle form input changes
@@ -53,15 +75,11 @@ const AdminPanel = () => {
     setServiceForm({ ...serviceForm, [field]: value });
   };
 
-  const handleTestimonialChange = (field: string, value: string | number) => {
-    setTestimonialForm({ ...testimonialForm, [field]: value });
-  };
-
   const handleSlideChange = (field: string, value: string) => {
     setSlideForm({ ...slideForm, [field]: value });
   };
 
-  // Mock save functions (would connect to backend in real implementation)
+  // Save functions that actually update data
   const saveProject = () => {
     if (!projectForm.title || !projectForm.description || !projectForm.image || !projectForm.category) {
       toast({
@@ -72,7 +90,21 @@ const AdminPanel = () => {
       return;
     }
 
-    // In a real application, this would send data to the server
+    // Ensure we have a complete project object
+    const completeProject: Project = {
+      id: projectForm.id || `project${projects.length + 1}`,
+      title: projectForm.title,
+      description: projectForm.description,
+      image: projectForm.image,
+      category: projectForm.category as ProjectCategory
+    };
+
+    // Update the project in our data service
+    updateProject(completeProject);
+    
+    // Refresh the projects list
+    setProjects(getProjects());
+
     toast({
       title: "Project saved",
       description: "The project has been saved successfully",
@@ -93,6 +125,20 @@ const AdminPanel = () => {
       return;
     }
 
+    // Ensure we have a complete service object
+    const completeService: Service = {
+      id: serviceForm.id || `service${services.length + 1}`,
+      title: serviceForm.title,
+      description: serviceForm.description,
+      icon: serviceForm.icon
+    };
+
+    // Update the service in our data service
+    updateService(completeService);
+    
+    // Refresh the services list
+    setServices(getServices());
+
     toast({
       title: "Service saved",
       description: "The service has been saved successfully",
@@ -100,25 +146,6 @@ const AdminPanel = () => {
     
     setSelectedService(null);
     setServiceForm({});
-  };
-
-  const saveTestimonial = () => {
-    if (!testimonialForm.name || !testimonialForm.position || !testimonialForm.text || !testimonialForm.image) {
-      toast({
-        title: "Missing fields",
-        description: "Please fill out all required fields",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    toast({
-      title: "Testimonial saved",
-      description: "The testimonial has been saved successfully",
-    });
-    
-    setSelectedTestimonial(null);
-    setTestimonialForm({});
   };
 
   const saveSlide = () => {
@@ -130,6 +157,20 @@ const AdminPanel = () => {
       });
       return;
     }
+
+    // Ensure we have a complete slide object
+    const completeSlide: HeroSlide = {
+      id: slideForm.id || `slide${heroSlides.length + 1}`,
+      title: slideForm.title,
+      description: slideForm.description,
+      image: slideForm.image
+    };
+
+    // Update the slide in our data service
+    updateSlide(completeSlide);
+    
+    // Refresh the slides list
+    setHeroSlides(getSlides());
 
     toast({
       title: "Slide saved",
@@ -149,10 +190,9 @@ const AdminPanel = () => {
         </CardHeader>
         <CardContent className="pt-6">
           <Tabs defaultValue="projects">
-            <TabsList className="grid grid-cols-4 mb-8">
+            <TabsList className="grid grid-cols-3 mb-8">
               <TabsTrigger value="projects">Projects</TabsTrigger>
               <TabsTrigger value="services">Services</TabsTrigger>
-              <TabsTrigger value="testimonials">Testimonials</TabsTrigger>
               <TabsTrigger value="hero">Hero Slides</TabsTrigger>
             </TabsList>
 
@@ -168,7 +208,9 @@ const AdminPanel = () => {
                         className={`p-3 rounded-lg cursor-pointer ${selectedProject?.id === project.id ? 'bg-[#1a365d] text-white' : 'bg-white hover:bg-gray-100'}`}
                         onClick={() => handleSelectProject(project)}
                       >
-                        <h4 className="font-medium">{project.title}</h4>
+                        <h4 className="font-medium">
+                          {project.title.startsWith("projects.") ? t(project.title) : project.title}
+                        </h4>
                         <p className="text-sm truncate">{project.category}</p>
                       </div>
                     ))}
@@ -192,7 +234,12 @@ const AdminPanel = () => {
 
                 <div className="md:col-span-2">
                   <h3 className="text-lg font-medium mb-4">
-                    {selectedProject ? `Edit Project: ${selectedProject.title}` : 'Create New Project'}
+                    {selectedProject 
+                      ? `Edit Project: ${selectedProject.title.startsWith("projects.") 
+                          ? t(selectedProject.title) 
+                          : selectedProject.title}`
+                      : 'Create New Project'
+                    }
                   </h3>
                   
                   <div className="space-y-4">
@@ -279,7 +326,9 @@ const AdminPanel = () => {
                         className={`p-3 rounded-lg cursor-pointer ${selectedService?.id === service.id ? 'bg-[#1a365d] text-white' : 'bg-white hover:bg-gray-100'}`}
                         onClick={() => handleSelectService(service)}
                       >
-                        <h4 className="font-medium">{service.title}</h4>
+                        <h4 className="font-medium">
+                          {service.title.startsWith("services.") ? t(service.title) : service.title}
+                        </h4>
                         <p className="text-sm truncate">{service.icon}</p>
                       </div>
                     ))}
@@ -302,7 +351,12 @@ const AdminPanel = () => {
 
                 <div className="md:col-span-2">
                   <h3 className="text-lg font-medium mb-4">
-                    {selectedService ? `Edit Service: ${selectedService.title}` : 'Create New Service'}
+                    {selectedService 
+                      ? `Edit Service: ${selectedService.title.startsWith("services.") 
+                          ? t(selectedService.title) 
+                          : selectedService.title}`
+                      : 'Create New Service'
+                    }
                   </h3>
                   
                   <div className="space-y-4">
@@ -360,130 +414,6 @@ const AdminPanel = () => {
               </div>
             </TabsContent>
 
-            {/* Testimonials Tab */}
-            <TabsContent value="testimonials">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="md:col-span-1 bg-gray-50 p-4 rounded-lg">
-                  <h3 className="text-lg font-medium mb-4">Select Testimonial to Edit</h3>
-                  <div className="space-y-2 max-h-[600px] overflow-y-auto">
-                    {testimonials.map((testimonial: Testimonial) => (
-                      <div 
-                        key={testimonial.id}
-                        className={`p-3 rounded-lg cursor-pointer ${selectedTestimonial?.id === testimonial.id ? 'bg-[#1a365d] text-white' : 'bg-white hover:bg-gray-100'}`}
-                        onClick={() => handleSelectTestimonial(testimonial)}
-                      >
-                        <h4 className="font-medium">{testimonial.name}</h4>
-                        <p className="text-sm truncate">{testimonial.position}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <Button 
-                    className="w-full mt-4 bg-[#e67e22] hover:bg-[#d35400]"
-                    onClick={() => {
-                      setSelectedTestimonial(null);
-                      setTestimonialForm({
-                        id: `testimonial${testimonials.length + 1}`,
-                        name: "",
-                        position: "",
-                        text: "",
-                        image: "",
-                        rating: 5
-                      });
-                    }}
-                  >
-                    Add New Testimonial
-                  </Button>
-                </div>
-
-                <div className="md:col-span-2">
-                  <h3 className="text-lg font-medium mb-4">
-                    {selectedTestimonial ? `Edit Testimonial: ${selectedTestimonial.name}` : 'Create New Testimonial'}
-                  </h3>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="testimonial-name">Client Name</Label>
-                      <Input 
-                        id="testimonial-name"
-                        value={testimonialForm.name || ""}
-                        onChange={(e) => handleTestimonialChange("name", e.target.value)}
-                        placeholder="Client name"
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="testimonial-position">Position</Label>
-                      <Input 
-                        id="testimonial-position"
-                        value={testimonialForm.position || ""}
-                        onChange={(e) => handleTestimonialChange("position", e.target.value)}
-                        placeholder="Client position"
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="testimonial-text">Testimonial Text</Label>
-                      <Textarea 
-                        id="testimonial-text"
-                        value={testimonialForm.text || ""}
-                        onChange={(e) => handleTestimonialChange("text", e.target.value)}
-                        placeholder="Testimonial content"
-                        rows={4}
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="testimonial-image">Client Photo URL</Label>
-                      <Input 
-                        id="testimonial-image"
-                        value={testimonialForm.image || ""}
-                        onChange={(e) => handleTestimonialChange("image", e.target.value)}
-                        placeholder="https://example.com/client-photo.jpg"
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="testimonial-rating">Rating (1-5)</Label>
-                      <Select 
-                        value={String(testimonialForm.rating || 5)}
-                        onValueChange={(value) => handleTestimonialChange("rating", Number(value))}
-                      >
-                        <SelectTrigger id="testimonial-rating">
-                          <SelectValue placeholder="Select rating" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="1">1 Star</SelectItem>
-                          <SelectItem value="2">2 Stars</SelectItem>
-                          <SelectItem value="3">3 Stars</SelectItem>
-                          <SelectItem value="4">4 Stars</SelectItem>
-                          <SelectItem value="4.5">4.5 Stars</SelectItem>
-                          <SelectItem value="5">5 Stars</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    
-                    <div className="pt-4 flex space-x-4">
-                      <Button 
-                        className="bg-[#e67e22] hover:bg-[#d35400]"
-                        onClick={saveTestimonial}
-                      >
-                        Save Testimonial
-                      </Button>
-                      <Button 
-                        variant="outline"
-                        onClick={() => {
-                          setSelectedTestimonial(null);
-                          setTestimonialForm({});
-                        }}
-                      >
-                        Cancel
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
             {/* Hero Slides Tab */}
             <TabsContent value="hero">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -496,8 +426,12 @@ const AdminPanel = () => {
                         className={`p-3 rounded-lg cursor-pointer ${selectedSlide?.id === slide.id ? 'bg-[#1a365d] text-white' : 'bg-white hover:bg-gray-100'}`}
                         onClick={() => handleSelectSlide(slide)}
                       >
-                        <h4 className="font-medium">{slide.title}</h4>
-                        <p className="text-sm truncate">{slide.description}</p>
+                        <h4 className="font-medium">
+                          {slide.title.startsWith("hero.") ? t(slide.title) : slide.title}
+                        </h4>
+                        <p className="text-sm truncate">
+                          {slide.description.startsWith("hero.") ? t(slide.description) : slide.description}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -519,7 +453,12 @@ const AdminPanel = () => {
 
                 <div className="md:col-span-2">
                   <h3 className="text-lg font-medium mb-4">
-                    {selectedSlide ? `Edit Slide: ${selectedSlide.title}` : 'Create New Slide'}
+                    {selectedSlide 
+                      ? `Edit Slide: ${selectedSlide.title.startsWith("hero.") 
+                          ? t(selectedSlide.title) 
+                          : selectedSlide.title}`
+                      : 'Create New Slide'
+                    }
                   </h3>
                   
                   <div className="space-y-4">
