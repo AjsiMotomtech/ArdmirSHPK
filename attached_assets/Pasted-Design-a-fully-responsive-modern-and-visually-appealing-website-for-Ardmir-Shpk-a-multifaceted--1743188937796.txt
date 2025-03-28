@@ -1,0 +1,64 @@
+Design a fully responsive, modern, and visually appealing website for 'Ardmir Shpk', a multifaceted business specializing in the following areas:
+
+Import & Export / Trade:
+Import and export of goods, including transportation equipment (excavators, spare parts, etc.), and retail trade of machinery components, oils, and greases.
+
+Construction & Infrastructure Works:
+Implementation of construction projects such as earthworks, masonry, reinforced concrete, blasting, and system installations; road construction, asphalt paving, and installation of concrete plants; and construction of civil buildings, gas stations, and artistic structures.
+
+Mining & Material Production:
+Utilization of quartz and granite stones, operation of quarries and mines, production of inert materials and concrete in various quantities, and establishment of concrete plants.
+
+Heavy Machinery & Industrial Services:
+Sale and leasing of construction vehicles (trucks, concrete mixers, concrete pumps, demolition hammers), installation and dismantling services for industrial equipment, and maintenance of technical apparatus in energy production and distribution plants (including TL, TU, and medium voltage lines).
+
+Additional Services:
+Green area maintenance, maritime constructions, deep port works, wood and metal production, road transport of construction aggregates and various goods for both domestic and international markets, as well as collection, packaging, and export of agricultural products (fruits and vegetables).
+
+The website should include the following sections:
+
+Home Page:
+
+A captivating hero section with high-quality images or a slider representing the diversity of services.
+
+An overview of the company with a brief introduction and clear call-to-action (e.g., 'Learn More' or 'Contact Us').
+
+About Us:
+
+A detailed description of Ardmir Shpk's history, mission, and values.
+
+A section on what sets the business apart, highlighting its comprehensive range of services.
+
+Services:
+
+Break down all service areas into clearly defined categories (e.g., Import/Export, Construction Works, Mining & Material Production, Heavy Machinery & Industrial Services, etc.).
+
+Each category should include a brief description, relevant icons or images, and bullet points for key offerings.
+
+Projects/Portfolio:
+
+Showcase completed projects with images, short descriptions, and client testimonials.
+
+Include interactive elements such as image sliders or filterable project categories.
+
+Contact:
+
+A contact form for inquiries.
+
+Detailed company contact information, including address, phone number, email, and social media links.
+
+An embedded map for easy location access.
+
+Design Requirements:
+
+Use modern typography and a clean, professional layout.
+
+Choose a color scheme that conveys trust, innovation, and reliability.
+
+Ensure intuitive navigation and responsiveness for both desktop and mobile devices.
+
+Incorporate interactive elements (e.g., hover effects, clickable service cards, image sliders) that enhance user engagement.
+
+Provide detailed annotations or an explanation for each design choice and section, ensuring the website communicates Ardmir Shpk's diverse service portfolio effectively.
+
+Design the webpage with a focus on clarity, usability, and visual impact to ensure potential clients understand the extensive capabilities of Ardmir Shpk at a glance.
