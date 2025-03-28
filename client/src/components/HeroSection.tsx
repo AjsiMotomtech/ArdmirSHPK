@@ -80,7 +80,7 @@ const HeroSection = () => {
                 transition={{ delay: 0.2, duration: 0.5 }}
                 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-white"
               >
-                Welcome to Ardmir
+                {t("hero.welcome")}
               </motion.h1>
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
