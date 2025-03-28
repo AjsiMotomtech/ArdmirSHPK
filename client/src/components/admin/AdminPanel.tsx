@@ -20,7 +20,7 @@ const AdminPanel = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [services, setServices] = useState<Service[]>([]);
   const [heroSlides, setHeroSlides] = useState<HeroSlide[]>([]);
-  
+
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedSlide, setSelectedSlide] = useState<HeroSlide | null>(null);
@@ -101,7 +101,7 @@ const AdminPanel = () => {
 
     // Update the project in our data service
     updateProject(completeProject);
-    
+
     // Refresh the projects list
     setProjects(getProjects());
 
@@ -109,7 +109,7 @@ const AdminPanel = () => {
       title: "Project saved",
       description: "The project has been saved successfully",
     });
-    
+
     // Reset selection
     setSelectedProject(null);
     setProjectForm({});
@@ -135,7 +135,7 @@ const AdminPanel = () => {
 
     // Update the service in our data service
     updateService(completeService);
-    
+
     // Refresh the services list
     setServices(getServices());
 
@@ -143,7 +143,7 @@ const AdminPanel = () => {
       title: "Service saved",
       description: "The service has been saved successfully",
     });
-    
+
     setSelectedService(null);
     setServiceForm({});
   };
@@ -168,7 +168,7 @@ const AdminPanel = () => {
 
     // Update the slide in our data service
     updateSlide(completeSlide);
-    
+
     // Refresh the slides list
     setHeroSlides(getSlides());
 
@@ -176,10 +176,19 @@ const AdminPanel = () => {
       title: "Slide saved",
       description: "The slide has been saved successfully",
     });
-    
+
     setSelectedSlide(null);
     setSlideForm({});
   };
+
+  const deleteProject = (projectId: string) => {
+    //  Implementation to delete project from your data source.
+    // This is a placeholder, replace with your actual deletion logic.
+    const updatedProjects = projects.filter((project) => project.id !== projectId);
+    setProjects(updatedProjects);
+
+  };
+
 
   return (
     <div className="container mx-auto py-10 px-4">
@@ -241,7 +250,7 @@ const AdminPanel = () => {
                       : 'Create New Project'
                     }
                   </h3>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <Label htmlFor="project-title">Title</Label>
@@ -252,7 +261,7 @@ const AdminPanel = () => {
                         placeholder="Project title"
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="project-description">Description</Label>
                       <Textarea 
@@ -263,7 +272,7 @@ const AdminPanel = () => {
                         rows={3}
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="project-image">Image URL</Label>
                       <Input 
@@ -273,7 +282,7 @@ const AdminPanel = () => {
                         placeholder="https://example.com/image.jpg"
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="project-category">Category</Label>
                       <Select 
@@ -291,7 +300,7 @@ const AdminPanel = () => {
                         </SelectContent>
                       </Select>
                     </div>
-                    
+
                     <div className="pt-4 flex space-x-4">
                       <Button 
                         className="bg-[#e67e22] hover:bg-[#d35400]"
@@ -308,6 +317,25 @@ const AdminPanel = () => {
                       >
                         Cancel
                       </Button>
+                      {selectedProject && (
+                        <Button 
+                          variant="destructive"
+                          onClick={() => {
+                            if (window.confirm('Are you sure you want to delete this project?')) {
+                              deleteProject(selectedProject.id);
+                              setProjects(getProjects());
+                              setSelectedProject(null);
+                              setProjectForm({});
+                              toast({
+                                title: "Project deleted",
+                                description: "The project has been deleted successfully",
+                              });
+                            }
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -358,7 +386,7 @@ const AdminPanel = () => {
                       : 'Create New Service'
                     }
                   </h3>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <Label htmlFor="service-title">Title</Label>
@@ -369,7 +397,7 @@ const AdminPanel = () => {
                         placeholder="Service title"
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="service-description">Description</Label>
                       <Textarea 
@@ -380,7 +408,7 @@ const AdminPanel = () => {
                         rows={4}
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="service-icon">Icon Class</Label>
                       <Input 
@@ -391,7 +419,7 @@ const AdminPanel = () => {
                       />
                       <p className="text-sm text-gray-500 mt-1">Use FontAwesome classes (e.g., fas fa-building)</p>
                     </div>
-                    
+
                     <div className="pt-4 flex space-x-4">
                       <Button 
                         className="bg-[#e67e22] hover:bg-[#d35400]"
@@ -460,7 +488,7 @@ const AdminPanel = () => {
                       : 'Create New Slide'
                     }
                   </h3>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <Label htmlFor="slide-title">Title</Label>
@@ -471,7 +499,7 @@ const AdminPanel = () => {
                         placeholder="Slide title"
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="slide-description">Description</Label>
                       <Textarea 
@@ -482,7 +510,7 @@ const AdminPanel = () => {
                         rows={3}
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="slide-image">Background Image URL</Label>
                       <Input 
@@ -492,7 +520,7 @@ const AdminPanel = () => {
                         placeholder="https://example.com/slide-background.jpg"
                       />
                     </div>
-                    
+
                     <div className="pt-4 flex space-x-4">
                       <Button 
                         className="bg-[#e67e22] hover:bg-[#d35400]"
