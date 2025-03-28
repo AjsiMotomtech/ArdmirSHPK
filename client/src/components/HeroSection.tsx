@@ -1,11 +1,32 @@
 import { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
-import { heroSlides } from "@/lib/data";
 
 const HeroSection = () => {
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroSlides = [
+    {
+      id: 1,
+      image: "/images/car1.jpg",
+      title: "slide1Title",
+      description: "slide1Description",
+    },
+    {
+      id: 2,
+      image: "/images/car2.jpg",
+      title: "slide2Title",
+      description: "slide2Description",
+    },
+    {
+      id: 3,
+      image: "/images/car3.jpg",
+      title: "slide3Title",
+      description: "slide3Description",
+    },
+  ];
+
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1));
@@ -43,16 +64,16 @@ const HeroSection = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1 }}
                 className="absolute inset-0"
+                style={{
+                  backgroundImage: `url(${slide.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
               >
                 <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-                <img 
-                  src={slide.image} 
-                  alt={t(slide.title)}
-                  className="object-cover h-full w-full"
-                />
                 <div className="container mx-auto px-4 h-full flex items-center relative z-20">
                   <div className="max-w-2xl text-white">
-                    <motion.h1 
+                    <motion.h1
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.2, duration: 0.5 }}
@@ -60,7 +81,7 @@ const HeroSection = () => {
                     >
                       {t(slide.title)}
                     </motion.h1>
-                    <motion.p 
+                    <motion.p
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.4, duration: 0.5 }}
@@ -68,19 +89,19 @@ const HeroSection = () => {
                     >
                       {t(slide.description)}
                     </motion.p>
-                    <motion.div 
+                    <motion.div
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.6, duration: 0.5 }}
                       className="flex flex-wrap gap-4"
                     >
-                      <button 
+                      <button
                         onClick={() => scrollToSection("sherbimet")}
                         className="bg-[#e67e22] hover:bg-[#d35400] text-white font-bold py-3 px-6 rounded-lg transition duration-300"
                       >
                         {t("hero.servicesButton")}
                       </button>
-                      <button 
+                      <button
                         onClick={() => scrollToSection("kontakt")}
                         className="bg-transparent border-2 border-white hover:bg-white hover:text-[#1a365d] font-bold py-3 px-6 rounded-lg transition duration-300"
                       >
@@ -101,8 +122,8 @@ const HeroSection = () => {
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition ${
-                currentSlide === index 
-                  ? "bg-white w-4" 
+                currentSlide === index
+                  ? "bg-white w-4"
                   : "bg-white opacity-60 hover:opacity-100"
               }`}
               aria-label={`Go to slide ${index + 1}`}
