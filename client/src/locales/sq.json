@@ -1,0 +1,215 @@
+{
+  "nav": {
+    "home": "Kreu",
+    "about": "Rreth Nesh",
+    "services": "Shërbimet",
+    "projects": "Projektet",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "slides": {
+      "1": {
+        "title": "Ndërtojmë të ardhmen tuaj",
+        "description": "Ekspertizë në ndërtim, infrastrukturë, tregti, industri dhe shumë më tepër"
+      },
+      "2": {
+        "title": "Teknologji & Pajisje Moderne",
+        "description": "Përfaqësojmë makineritë e rënda industriale më të avancuara në treg"
+      },
+      "3": {
+        "title": "Tregti Ndërkombëtare",
+        "description": "Import dhe eksport i mallrave për tregun kombëtar dhe ndërkombëtar"
+      }
+    },
+    "servicesButton": "Shërbimet Tona",
+    "contactButton": "Na Kontaktoni"
+  },
+  "about": {
+    "subtitle": "Rreth Nesh",
+    "title": "Histori Suksesi Në Ndërtim & Industri",
+    "paragraph1": "Ardmir Shpk është një biznes shumëfunksional me përvojë të gjerë në fusha të ndryshme përfshirë ndërtimin, tregtinë ndërkombëtare, minierat dhe prodhimin e materialeve, si dhe shërbimet industriale.",
+    "paragraph2": "Që nga themelimi, kemi realizuar projekte të rëndësishme në të gjithë vendin, duke sjellë standarde të larta të cilësisë, inovacionit dhe besueshmërisë në çdo aspekt të punës sonë.",
+    "stats": {
+      "years": "Vite Eksperiencë",
+      "projects": "Projekte të Realizuara",
+      "professionals": "Profesionistë",
+      "partners": "Partnerë Ndërkombëtarë"
+    },
+    "exploreButton": "Zbulo Shërbimet Tona",
+    "imageAlt": "Foto e ekipit Ardmir Shpk"
+  },
+  "services": {
+    "subtitle": "Shërbimet Tona",
+    "title": "Ekspertiza në Fushat Kryesore",
+    "learnMore": "Mëso më shumë",
+    "items": {
+      "import": {
+        "title": "Import & Eksport / Tregti",
+        "description": "Import dhe eksport i mallrave, përfshirë pajisjet e transportit (ekskavatorë, pjesë këmbimi, etj.), dhe tregtim të komponentëve të makinerive, vajrave dhe yndyrave."
+      },
+      "construction": {
+        "title": "Ndërtim & Punime Infrastrukture",
+        "description": "Realizim i projekteve të ndërtimit si punime tokësore, muraturë, beton i armuar, shpërthime, dhe instalime sistemesh; ndërtim rrugësh, asfaltim, dhe instalim të fabrikave të betonit."
+      },
+      "mining": {
+        "title": "Miniera & Prodhim Materialesh",
+        "description": "Shfrytëzimi i gurëve të kuarcit dhe granitit, operimi i guroreve dhe minierave, prodhimi i materialeve inerte dhe betonit në sasi të ndryshme, dhe krijimi i fabrikave të betonit."
+      },
+      "machinery": {
+        "title": "Makineri të Rënda & Shërbime Industriale",
+        "description": "Shitje dhe dhënie me qira e automjeteve të ndërtimit (kamionë, miksera betoni, pompa betoni, çekiçë shkatërrues), shërbime instalimi dhe çmontimi për pajisje industriale."
+      },
+      "additional": {
+        "title": "Shërbime Shtesë",
+        "description": "Mirëmbajtje e zonave të gjelbra, ndërtime detare, punime portuale të thella, prodhim druri dhe metali, transport rrugor i agregateve të ndërtimit dhe mallrave të ndryshme."
+      },
+      "agriculture": {
+        "title": "Produkte Bujqësore",
+        "description": "Mbledhje, paketim dhe eksport i produkteve bujqësore (fruta dhe perime) për tregjet vendase dhe ndërkombëtare, duke siguruar cilësi dhe freski të produkteve."
+      }
+    }
+  },
+  "cta": {
+    "title": "Gati të fillojmë një projekt së bashku?",
+    "subtitle": "Kontaktoni ekspertët tanë sot për një konsulencë falas.",
+    "button": "Kontakto Tani"
+  },
+  "projects": {
+    "subtitle": "Projektet Tona",
+    "title": "Puna Jonë Më e Mirë",
+    "viewDetails": "Shiko detajet",
+    "filters": {
+      "all": "Të Gjitha",
+      "construction": "Ndërtim",
+      "infrastructure": "Infrastrukturë",
+      "mining": "Miniera",
+      "industrial": "Industriale"
+    },
+    "items": {
+      "1": {
+        "title": "Kompleks Banimi Modern",
+        "description": "Ndërtim i plotë i një kompleksi banimi modern me 120 apartamente"
+      },
+      "2": {
+        "title": "Rrugë Nacionale",
+        "description": "Ndërtim dhe asfaltim i 25 km rrugë nacionale me standarde evropiane"
+      },
+      "3": {
+        "title": "Gurore Graniti",
+        "description": "Operimi i guroreve moderne për nxjerrjen e granitit të cilësisë së lartë"
+      },
+      "4": {
+        "title": "Fabrikë Betoni",
+        "description": "Ndërtim dhe operim i fabrikës moderne të betonit me kapacitet 120m³/orë"
+      },
+      "5": {
+        "title": "Stacion Karburanti",
+        "description": "Ndërtim i plotë i stacionit modern të karburantit me facilitet të plota"
+      },
+      "6": {
+        "title": "Punime Portuale",
+        "description": "Zgjerim dhe rinovim i infrastrukturës portuale me standarde ndërkombëtare"
+      }
+    }
+  },
+  "testimonials": {
+    "subtitle": "Dëshmitë",
+    "title": "Çfarë Thonë Klientët Tanë",
+    "clientPortrait": "Portreti i klientit",
+    "items": {
+      "1": {
+        "name": "Besnik Krasniqi",
+        "position": "Drejtor i Zhvillimit, Albi Construction",
+        "text": "Ardmir Shpk ka realizuar projektin tonë të kompleksit të banimit në një kohë rekord dhe me një cilësi të jashtëzakonshme. Profesionalizmi i tyre, përpikmëria dhe komunikimi i vazhdueshëm i ka tejkaluar pritshmëritë tona."
+      },
+      "2": {
+        "name": "Lindita Berisha",
+        "position": "Drejtoreshë Operacionale, Infratech Kosovo",
+        "text": "Pajisjet që kemi importuar nëpërmjet Ardmir Shpk janë të cilësisë më të lartë në treg. Shërbimi i tyre i klientit dhe mbështetja teknike kanë qenë të jashtëzakonshme. Definitivisht do të vazhdojmë bashkëpunimin."
+      },
+      "3": {
+        "name": "Arben Gashi",
+        "position": "Drejtor i Urbanizmit, Komuna e Gjakovës",
+        "text": "Punët infrastrukturore të kryera nga Ardmir Shpk për komunën tonë kanë qenë të një standardi jashtëzakonisht të lartë. Ekipi i tyre i inxhinierëve dhe punëtorëve është i përkushtuar dhe i aftë për të zgjidhur çdo sfidë teknike."
+      }
+    }
+  },
+  "contact": {
+    "subtitle": "Na Kontaktoni",
+    "title": "Jemi Këtu për Ju",
+    "form": {
+      "title": "Dërgoni Mesazh",
+      "name": "Emri i plotë",
+      "email": "Email",
+      "subject": "Subjekti",
+      "message": "Mesazhi",
+      "submit": "Dërgo Mesazhin",
+      "sending": "Duke dërguar..."
+    },
+    "info": {
+      "title": "Informacione Kontakti",
+      "address": {
+        "title": "Adresa jonë",
+        "content": "Rr. Ibrahim Rugova, Nr. 120, 10000 Prishtinë, Kosovë"
+      },
+      "phone": {
+        "title": "Na telefononi",
+        "primary": "+383 44 123 456",
+        "secondary": "+383 49 789 012"
+      },
+      "email": {
+        "title": "Email",
+        "primary": "info@ardmir-shpk.com",
+        "secondary": "kontakt@ardmir-shpk.com"
+      },
+      "hours": {
+        "title": "Orari i punës",
+        "weekdays": "E Hënë - E Premte: 8:00 - 17:00",
+        "weekend": "E Shtunë: 9:00 - 14:00"
+      },
+      "social": {
+        "title": "Na ndiqni"
+      }
+    },
+    "success": {
+      "title": "Faleminderit!",
+      "message": "Mesazhi juaj u dërgua me sukses. Do t'ju kontaktojmë së shpejti."
+    },
+    "error": {
+      "title": "Gabim",
+      "message": "Ndodhi një problem gjatë dërgimit të mesazhit tuaj. Ju lutemi provoni përsëri më vonë."
+    }
+  },
+  "footer": {
+    "companyDescription": "Kompani shumëfunksionale që ofron shërbime të ndryshme në fushën e ndërtimit, tregtisë, minierave dhe industrisë.",
+    "services": {
+      "title": "Shërbimet Tona",
+      "items": {
+        "0": "Import & Eksport",
+        "1": "Ndërtim & Infrastrukturë",
+        "2": "Miniera & Prodhim Materialesh",
+        "3": "Makineri të Rënda",
+        "4": "Mirëmbajtje Zonash të Gjelbra",
+        "5": "Produkte Bujqësore"
+      }
+    },
+    "quickLinks": {
+      "title": "Lidhjet e Shpejta",
+      "home": "Kreu",
+      "about": "Rreth Nesh",
+      "services": "Shërbimet",
+      "projects": "Projektet",
+      "contact": "Kontakt"
+    },
+    "contact": {
+      "title": "Na Kontaktoni",
+      "address": "Rr. Ibrahim Rugova, Nr. 120, 10000 Prishtinë, Kosovë",
+      "phone": "+383 44 123 456",
+      "email": "info@ardmir-shpk.com",
+      "hours": "E Hënë - E Premte: 8:00 - 17:00"
+    },
+    "copyright": "Të gjitha të drejtat të rezervuara.",
+    "privacy": "Politika e Privatësisë",
+    "terms": "Kushtet e Përdorimit"
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "slides": {
+      "1": {
+        "title": "Building Your Future",
+        "description": "Expertise in construction, infrastructure, trade, industry and more"
+      },
+      "2": {
+        "title": "Modern Technology & Equipment",
+        "description": "Representing the most advanced heavy industrial machinery on the market"
+      },
+      "3": {
+        "title": "International Trade",
+        "description": "Import and export of goods for national and international markets"
+      }
+    },
+    "servicesButton": "Our Services",
+    "contactButton": "Contact Us"
+  },
+  "about": {
+    "subtitle": "About Us",
+    "title": "Success Story in Construction & Industry",
+    "paragraph1": "Ardmir Shpk is a multifunctional business with extensive experience in various fields including construction, international trade, mining and material production, as well as industrial services.",
+    "paragraph2": "Since its foundation, we have completed important projects throughout the country, bringing high standards of quality, innovation and reliability to every aspect of our work.",
+    "stats": {
+      "years": "Years Experience",
+      "projects": "Completed Projects",
+      "professionals": "Professionals",
+      "partners": "International Partners"
+    },
+    "exploreButton": "Explore Our Services",
+    "imageAlt": "Ardmir Shpk Team Photo"
+  },
+  "services": {
+    "subtitle": "Our Services",
+    "title": "Expertise in Key Areas",
+    "learnMore": "Learn More",
+    "items": {
+      "import": {
+        "title": "Import & Export / Trade",
+        "description": "Import and export of goods, including transportation equipment (excavators, spare parts, etc.), and retail trade of machinery components, oils, and greases."
+      },
+      "construction": {
+        "title": "Construction & Infrastructure",
+        "description": "Implementation of construction projects such as earthworks, masonry, reinforced concrete, blasting, and system installations; road construction, asphalt paving, and installation of concrete plants."
+      },
+      "mining": {
+        "title": "Mining & Material Production",
+        "description": "Utilization of quartz and granite stones, operation of quarries and mines, production of inert materials and concrete in various quantities, and establishment of concrete plants."
+      },
+      "machinery": {
+        "title": "Heavy Machinery & Industrial Services",
+        "description": "Sale and leasing of construction vehicles (trucks, concrete mixers, concrete pumps, demolition hammers), installation and dismantling services for industrial equipment."
+      },
+      "additional": {
+        "title": "Additional Services",
+        "description": "Green area maintenance, maritime constructions, deep port works, wood and metal production, road transport of construction aggregates and various goods."
+      },
+      "agriculture": {
+        "title": "Agricultural Products",
+        "description": "Collection, packaging and export of agricultural products (fruits and vegetables) for domestic and international markets, ensuring product quality and freshness."
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to start a project together?",
+    "subtitle": "Contact our experts today for a free consultation.",
+    "button": "Contact Now"
+  },
+  "projects": {
+    "subtitle": "Our Projects",
+    "title": "Our Best Work",
+    "viewDetails": "View Details",
+    "filters": {
+      "all": "All",
+      "construction": "Construction",
+      "infrastructure": "Infrastructure",
+      "mining": "Mining",
+      "industrial": "Industrial"
+    },
+    "items": {
+      "1": {
+        "title": "Modern Residential Complex",
+        "description": "Complete construction of a modern residential complex with 120 apartments"
+      },
+      "2": {
+        "title": "National Road",
+        "description": "Construction and paving of 25 km of national road with European standards"
+      },
+      "3": {
+        "title": "Granite Quarry",
+        "description": "Operation of modern quarries for the extraction of high quality granite"
+      },
+      "4": {
+        "title": "Concrete Factory",
+        "description": "Construction and operation of a modern concrete factory with a capacity of 120m³/hour"
+      },
+      "5": {
+        "title": "Gas Station",
+        "description": "Complete construction of a modern gas station with full facilities"
+      },
+      "6": {
+        "title": "Port Works",
+        "description": "Expansion and renovation of port infrastructure with international standards"
+      }
+    }
+  },
+  "testimonials": {
+    "subtitle": "Testimonials",
+    "title": "What Our Clients Say",
+    "clientPortrait": "Client Portrait",
+    "items": {
+      "1": {
+        "name": "Besnik Krasniqi",
+        "position": "Development Director, Albi Construction",
+        "text": "Ardmir Shpk completed our residential complex project in record time and with exceptional quality. Their professionalism, punctuality and continuous communication exceeded our expectations."
+      },
+      "2": {
+        "name": "Lindita Berisha",
+        "position": "Operational Director, Infratech Kosovo",
+        "text": "The equipment we imported through Ardmir Shpk is of the highest quality in the market. Their customer service and technical support have been outstanding. We will definitely continue the cooperation."
+      },
+      "3": {
+        "name": "Arben Gashi",
+        "position": "Director of Urbanism, Municipality of Gjakova",
+        "text": "The infrastructure works carried out by Ardmir Shpk for our municipality have been of an exceptionally high standard. Their team of engineers and workers is dedicated and capable of solving any technical challenge."
+      }
+    }
+  },
+  "contact": {
+    "subtitle": "Contact Us",
+    "title": "We Are Here For You",
+    "form": {
+      "title": "Send Message",
+      "name": "Full Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending..."
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": {
+        "title": "Our Address",
+        "content": "Rr. Ibrahim Rugova, Nr. 120, 10000 Prishtinë, Kosovo"
+      },
+      "phone": {
+        "title": "Call Us",
+        "primary": "+383 44 123 456",
+        "secondary": "+383 49 789 012"
+      },
+      "email": {
+        "title": "Email",
+        "primary": "info@ardmir-shpk.com",
+        "secondary": "contact@ardmir-shpk.com"
+      },
+      "hours": {
+        "title": "Working Hours",
+        "weekdays": "Monday - Friday: 8:00 - 17:00",
+        "weekend": "Saturday: 9:00 - 14:00"
+      },
+      "social": {
+        "title": "Follow Us"
+      }
+    },
+    "success": {
+      "title": "Thank you!",
+      "message": "Your message has been sent successfully. We will contact you soon."
+    },
+    "error": {
+      "title": "Error",
+      "message": "There was a problem sending your message. Please try again later."
+    }
+  },
+  "footer": {
+    "companyDescription": "A multifunctional company offering various services in the field of construction, trade, mining and industry.",
+    "services": {
+      "title": "Our Services",
+      "items": {
+        "0": "Import & Export",
+        "1": "Construction & Infrastructure",
+        "2": "Mining & Material Production",
+        "3": "Heavy Machinery",
+        "4": "Green Area Maintenance",
+        "5": "Agricultural Products"
+      }
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "home": "Home",
+      "about": "About Us",
+      "services": "Services",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "address": "Rr. Ibrahim Rugova, Nr. 120, 10000 Prishtinë, Kosovo",
+      "phone": "+383 44 123 456",
+      "email": "info@ardmir-shpk.com",
+      "hours": "Monday - Friday: 8:00 - 17:00"
+    },
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
+  }
+}
