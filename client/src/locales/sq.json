@@ -46,27 +46,27 @@
     "items": {
       "import": {
         "title": "Import & Eksport / Tregti",
-        "description": "Import dhe eksport i mallrave, përfshirë pajisjet e transportit (ekskavatorë, pjesë këmbimi, etj.), dhe tregtim të komponentëve të makinerive, vajrave dhe yndyrave."
+        "description": "Import dhe eksport i mallrave, përfshirë pajisjet e transportit (ekskavatorë, pjesë këmbimi, etj.), dhe tregtim të komponentëve të makinerive, vajrave dhe yndyrave. Ne jemi të specializuar në importimin dhe eksportimin e mjeteve dhe pajisjeve të transportit për qëllime ndërtimi dhe industriale."
       },
       "construction": {
         "title": "Ndërtim & Punime Infrastrukture",
-        "description": "Realizim i projekteve të ndërtimit si punime tokësore, muraturë, beton i armuar, shpërthime, dhe instalime sistemesh; ndërtim rrugësh, asfaltim, dhe instalim të fabrikave të betonit."
+        "description": "Zbatim i punimeve të ndërtimit duke përfshirë punim dheu, muraturë, betonarme, shembje, sistemime, ndërtim rrugësh, asfaltim, instalim të fabrikave të betonit, gazsjellesa, ndërtesa civile, kanalizime dhe vepra arti."
       },
       "mining": {
         "title": "Miniera & Prodhim Materialesh",
-        "description": "Shfrytëzimi i gurëve të kuarcit dhe granitit, operimi i guroreve dhe minierave, prodhimi i materialeve inerte dhe betonit në sasi të ndryshme, dhe krijimi i fabrikave të betonit."
+        "description": "Shfrytëzimi i gurëve gëlqeror, operimi i guroreve dhe karierave të zhavorit, prodhim betoni, prodhimi i materialeve inerte dhe ndërtimi në sasi me pakicë dhe shumicë, krijimi dhe operimi i impianteve të betonit."
       },
       "machinery": {
         "title": "Makineri të Rënda & Shërbime Industriale",
-        "description": "Shitje dhe dhënie me qira e automjeteve të ndërtimit (kamionë, miksera betoni, pompa betoni, çekiçë shkatërrues), shërbime instalimi dhe çmontimi për pajisje industriale."
+        "description": "Shitje dhe dhënie me qira e kamionëve dhe automjeteve të ndërtimit duke përfshirë autobetoniere, pompa betoni, çekiçë shkatërrues. Ne ofrojmë gjithashtu shërbime montimi dhe çmontimi për pajisje dhe makineri industriale, si dhe sistemet e prodhimit dhe shpërndarjes së energjisë, përfshirë linjat e TL dhe TU e të mesëm."
       },
       "additional": {
         "title": "Shërbime Shtesë",
-        "description": "Mirëmbajtje e zonave të gjelbra, ndërtime detare, punime portuale të thella, prodhim druri dhe metali, transport rrugor i agregateve të ndërtimit dhe mallrave të ndryshme."
+        "description": "Punime në sipërfaqe të gjelbërta, ndërtime detare, punime thellimi në porte, prodhime druri dhe metalike, transport rrugor të inerteve të ndërtimit dhe mallrave të ndryshme për të tretë brenda dhe jashtë vendit."
       },
       "agriculture": {
         "title": "Produkte Bujqësore",
-        "description": "Mbledhje, paketim dhe eksport i produkteve bujqësore (fruta dhe perime) për tregjet vendase dhe ndërkombëtare, duke siguruar cilësi dhe freski të produkteve."
+        "description": "Pike grumbullimi për tregti, ambalazhim dhe eksport të produkteve bujqësore (fruta dhe perime) për tregjet vendase dhe ndërkombëtare, duke siguruar cilësinë dhe freskinë e produkteve."
       }
     }
   },
@@ -155,13 +155,13 @@
       },
       "phone": {
         "title": "Na telefononi",
-        "primary": "+383 44 123 456",
-        "secondary": "+383 49 789 012"
+        "primary": "0696054333",
+        "secondary": ""
       },
       "email": {
         "title": "Email",
-        "primary": "info@ardmir-shpk.com",
-        "secondary": "kontakt@ardmir-shpk.com"
+        "primary": "ardmirshpk@yahoo.com",
+        "secondary": ""
       },
       "hours": {
         "title": "Orari i punës",
@@ -205,8 +205,8 @@
     "contact": {
       "title": "Na Kontaktoni",
       "address": "Rr. Ibrahim Rugova, Nr. 120, 10000 Prishtinë, Kosovë",
-      "phone": "+383 44 123 456",
-      "email": "info@ardmir-shpk.com",
+      "phone": "0696054333",
+      "email": "ardmirshpk@yahoo.com",
       "hours": "E Hënë - E Premte: 8:00 - 17:00"
     },
     "copyright": "Të gjitha të drejtat të rezervuara.",

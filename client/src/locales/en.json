@@ -46,27 +46,27 @@
     "items": {
       "import": {
         "title": "Import & Export / Trade",
-        "description": "Import and export of goods, including transportation equipment (excavators, spare parts, etc.), and retail trade of machinery components, oils, and greases."
+        "description": "Import and export of goods, including transportation equipment (excavators, spare parts, etc.), and retail trade of machinery components, oils, and greases. We specialize in importing and exporting transportation vehicles and equipment for construction and industrial purposes."
       },
       "construction": {
         "title": "Construction & Infrastructure",
-        "description": "Implementation of construction projects such as earthworks, masonry, reinforced concrete, blasting, and system installations; road construction, asphalt paving, and installation of concrete plants."
+        "description": "Implementation of construction projects including earthworks, masonry, reinforced concrete, demolition, system installations, road construction, asphalt paving, installation of concrete plants, gas pipelines, civil buildings, canalization works, and art structures."
       },
       "mining": {
         "title": "Mining & Material Production",
-        "description": "Utilization of quartz and granite stones, operation of quarries and mines, production of inert materials and concrete in various quantities, and establishment of concrete plants."
+        "description": "Exploitation of limestone, operation of quarries and gravel pits, concrete production, production of inert and construction materials in retail and wholesale quantities, establishment and operation of concrete plants."
       },
       "machinery": {
         "title": "Heavy Machinery & Industrial Services",
-        "description": "Sale and leasing of construction vehicles (trucks, concrete mixers, concrete pumps, demolition hammers), installation and dismantling services for industrial equipment."
+        "description": "Sale and leasing of trucks and construction vehicles including concrete mixers, concrete pumps, demolition hammers. We also provide installation, assembly, and disassembly services for industrial equipment, energy production, and distribution systems, including medium and high voltage lines."
       },
       "additional": {
         "title": "Additional Services",
-        "description": "Green area maintenance, maritime constructions, deep port works, wood and metal production, road transport of construction aggregates and various goods."
+        "description": "Green area maintenance, maritime constructions, deep port works, wood and metal production, road transport of construction aggregates and various goods for third parties both domestically and internationally."
       },
       "agriculture": {
         "title": "Agricultural Products",
-        "description": "Collection, packaging and export of agricultural products (fruits and vegetables) for domestic and international markets, ensuring product quality and freshness."
+        "description": "Collection point for trading, packaging and export of agricultural products (fruits and vegetables) for domestic and international markets, ensuring product quality and freshness."
       }
     }
   },
@@ -155,13 +155,13 @@
       },
       "phone": {
         "title": "Call Us",
-        "primary": "+383 44 123 456",
-        "secondary": "+383 49 789 012"
+        "primary": "0696054333",
+        "secondary": ""
       },
       "email": {
         "title": "Email",
-        "primary": "info@ardmir-shpk.com",
-        "secondary": "contact@ardmir-shpk.com"
+        "primary": "ardmirshpk@yahoo.com",
+        "secondary": ""
       },
       "hours": {
         "title": "Working Hours",
@@ -205,8 +205,8 @@
     "contact": {
       "title": "Contact Us",
       "address": "Rr. Ibrahim Rugova, Nr. 120, 10000 Prishtinë, Kosovo",
-      "phone": "+383 44 123 456",
-      "email": "info@ardmir-shpk.com",
+      "phone": "0696054333",
+      "email": "ardmirshpk@yahoo.com",
       "hours": "Monday - Friday: 8:00 - 17:00"
     },
     "copyright": "All rights reserved.",
