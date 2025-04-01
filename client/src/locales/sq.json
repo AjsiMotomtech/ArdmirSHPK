@@ -60,21 +60,13 @@
         "title": "Makineri të Rënda & Shërbime Industriale",
         "description": "Shitje dhe dhënie me qira e kamionëve dhe automjeteve të ndërtimit duke përfshirë autobetoniere, pompa betoni, çekiçë shkatërrues. Ne ofrojmë gjithashtu shërbime montimi dhe çmontimi për pajisje dhe makineri industriale, si dhe sistemet e prodhimit dhe shpërndarjes së energjisë, përfshirë linjat e TL dhe TU e të mesëm."
       },
-      "river": {
-        "title": "Punime Mbrojtëse Lumenjsh",
-        "description": "Shërbime të specializuara në mbrojtjen e lumenjve dhe parandalimin e përmbytjeve. Kemi përvojë të gjerë në thellimin e shtretërve të lumenjve, ndërtimin e digave dhe punimet emergjente të lumenjve në të gjithë Shqipërinë, duke përfshirë projektet në Drinos, Vjosë, Shkumbin dhe lumin Osum."
-      },
-      "industrial": {
-        "title": "Shërbime Industriale",
-        "description": "Shërbime industriale gjithëpërfshirëse, duke përfshirë instalimin dhe çmontimin e pajisjeve industriale, mirëmbajtjen e aparaturave teknike në impiantet e prodhimit dhe shpërndarjes së energjisë, dhe punime të specializuara në linjat TL, TU dhe tensionit të mesëm."
-      },
-      "transport": {
-        "title": "Shërbime Transporti",
-        "description": "Transport rrugor i agregateve të ndërtimit dhe mallrave të ndryshme për tregjet vendase dhe ndërkombëtare. Flota jonë e automjeteve të transportit siguron dorëzimin e sigurt dhe efikas të materialeve për projektet tona dhe klientët e palëve të treta."
-      },
       "additional": {
         "title": "Shërbime Shtesë",
         "description": "Punime në sipërfaqe të gjelbërta, ndërtime detare, punime thellimi në porte, prodhime druri dhe metalike, transport rrugor të inerteve të ndërtimit dhe mallrave të ndryshme për të tretë brenda dhe jashtë vendit."
+      },
+      "agriculture": {
+        "title": "Produkte Bujqësore",
+        "description": "Pike grumbullimi për tregti, ambalazhim dhe eksport të produkteve bujqësore (fruta dhe perime) për tregjet vendase dhe ndërkombëtare, duke siguruar cilësinë dhe freskinë e produkteve."
       }
     }
   },

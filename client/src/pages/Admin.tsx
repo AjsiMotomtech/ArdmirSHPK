@@ -96,7 +96,7 @@ const Admin = () => {
           <div className="flex items-center space-x-4">
             <Button 
               variant="outline" 
-              className="bg-white/10 text-white border-white hover:bg-[#2c4f84] hover:text-white hover:border-white"
+              className="text-white border-white hover:bg-[#2c4f84]"
               onClick={() => navigate("/")}
             >
               View Website

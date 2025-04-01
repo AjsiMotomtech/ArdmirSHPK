@@ -60,21 +60,13 @@
         "title": "Heavy Machinery & Industrial Services",
         "description": "We own and operate a comprehensive fleet including Liebherr, Caterpillar, and Volvo excavators, bulldozers, concrete mixers, dump trucks, and specialized equipment. Our services include installation and maintenance of energy production and distribution systems, including medium and high voltage lines."
       },
-      "river": {
-        "title": "River Protection Works",
-        "description": "Specialized services in river protection and flood prevention works. We have extensive experience in riverbed deepening, embankment construction, and emergency river works across Albania, including projects on Drinos, Vjosë, Shkumbin, and Osum rivers."
-      },
-      "industrial": {
-        "title": "Industrial Services",
-        "description": "Comprehensive industrial services including installation and dismantling of industrial equipment, maintenance of technical apparatus in energy production and distribution plants, and specialized work on TL, TU, and medium voltage lines."
-      },
-      "transport": {
-        "title": "Transport Services",
-        "description": "Road transport of construction aggregates and various goods for both domestic and international markets. Our fleet of transport vehicles ensures safe and efficient delivery of materials for our projects and third-party clients."
-      },
       "additional": {
         "title": "Additional Services",
         "description": "We provide services in green area maintenance, maritime constructions, deep port works, wood and metal production. Our transport services include road transport of construction materials and various goods for third parties both domestically and internationally."
+      },
+      "agriculture": {
+        "title": "Agricultural Products",
+        "description": "Collection point for trading, packaging and export of agricultural products (fruits and vegetables) for domestic and international markets, ensuring product quality and freshness throughout the supply chain."
       }
     }
   },
