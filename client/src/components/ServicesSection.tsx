@@ -6,6 +6,7 @@ import { services } from "@/lib/data";
 const ServicesSection = () => {
   const { t } = useTranslation();
   const { ref, inView } = useIntersectionObserver({ threshold: 0.1, triggerOnce: true });
+  const divRef = ref as React.LegacyRef<HTMLDivElement>;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -39,7 +40,7 @@ const ServicesSection = () => {
     <section id="sherbimet" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <motion.div 
-          ref={ref}
+          ref={divRef}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
@@ -76,8 +77,12 @@ const ServicesSection = () => {
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
               className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:shadow-xl"
             >
-              <div className="h-48 bg-[#1a365d] flex items-center justify-center">
-                <i className={`${service.icon} text-6xl text-white opacity-70`}></i>
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src={service.icon} 
+                  alt={t(service.title)} 
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                />
               </div>
               <div className="p-6">
                 <h4 className="font-heading font-bold text-xl text-[#1a365d] mb-3">
