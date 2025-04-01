@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -12,7 +11,8 @@ import { Button } from "@/components/ui/button";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { Map, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import useWeb3Forms from "@web3forms/react";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, {
@@ -33,7 +33,6 @@ type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const ContactSection = () => {
   const { t } = useTranslation();
-  const { ref, inView } = useIntersectionObserver({ threshold: 0.1, triggerOnce: true });
   const { toast } = useToast();
   const [isSending, setIsSending] = useState(false);
 
@@ -47,16 +46,20 @@ const ContactSection = () => {
     },
   });
 
-  const contactMutation = useMutation({
-    mutationFn: (data: ContactFormValues) => {
-      return apiRequest("POST", "/api/contact", data);
+  // Web3Forms setup
+  const { submit: submitToWeb3Forms } = useWeb3Forms({
+    access_key: "ba8fd0b1-fecb-4fbb-8b06-59b54a761d27", // This is a test access key, you should replace it with your actual key
+    settings: {
+      from_name: "Ardmir Website Contact",
+      subject: "New Contact Message from Ardmir Website",
     },
-    onSuccess: () => {
+    onSuccess: (message) => {
       toast({
         title: t("contact.success.title"),
         description: t("contact.success.message"),
       });
       form.reset();
+      setIsSending(false);
     },
     onError: (error) => {
       toast({
@@ -64,15 +67,36 @@ const ContactSection = () => {
         description: t("contact.error.message"),
         variant: "destructive",
       });
-      console.error("Contact form submission error:", error);
-    },
-    onSettled: () => {
+      console.error("Web3Forms submission error:", error);
       setIsSending(false);
+    }
+  });
+
+  // API submission (to store in our database)
+  const contactMutation = useMutation({
+    mutationFn: (data: ContactFormValues) => {
+      return apiRequest("POST", "/api/contact", data);
+    },
+    onError: (error) => {
+      console.error("API submission error:", error);
+      // We don't show an error here as Web3Forms is the primary method
+      // and we don't want to confuse the user if only the internal storage fails
     }
   });
 
   function onSubmit(data: ContactFormValues) {
     setIsSending(true);
+    
+    // Send to Web3Forms (primary method for email)
+    submitToWeb3Forms({
+      name: data.name,
+      email: data.email,
+      subject: data.subject,
+      message: data.message,
+      replyto: "ardmirshpk@yahoo.com", // Reply to company email
+    });
+    
+    // Also store in our database for admin panel
     contactMutation.mutate(data);
   }
 
@@ -108,9 +132,8 @@ const ContactSection = () => {
     <section id="kontakt" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <motion.div 
-          ref={ref}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate="visible"
           variants={containerVariants}
           className="text-center mb-16"
         >
@@ -136,7 +159,7 @@ const ContactSection = () => {
           <motion.div
             variants={contentVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate="visible"
           >
             <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
               <h4 className="font-heading font-bold text-xl text-[#1a365d] mb-6">
@@ -231,7 +254,7 @@ const ContactSection = () => {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate="visible"
           >
             <motion.div 
               variants={contentVariants}
