@@ -75,35 +75,35 @@ export const projects: Project[] = [
     id: "project1",
     title: "projects.items.1.title",
     description: "projects.items.1.description",
-    image: "https://images.unsplash.com/photo-1591706515036-c7974e39fd12?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1574706475510-f0d2d6d4c5fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "river-works"
   },
   {
     id: "project2",
     title: "projects.items.2.title",
     description: "projects.items.2.description",
-    image: "https://images.unsplash.com/photo-1536009190979-329b92ad22a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "river-works"
   },
   {
     id: "project3",
     title: "projects.items.3.title",
     description: "projects.items.3.description",
-    image: "https://images.unsplash.com/photo-1589475745357-90b5c84c7762?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1575262272681-65a3c6c8129a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "river-works"
   },
   {
     id: "project4",
     title: "projects.items.4.title",
     description: "projects.items.4.description",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1572495754162-86bb7ea9080a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "river-works"
   },
   {
     id: "project5",
     title: "projects.items.5.title",
     description: "projects.items.5.description",
-    image: "https://images.unsplash.com/photo-1589475733064-daa0862e59d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "river-works"
   },
   
@@ -112,7 +112,7 @@ export const projects: Project[] = [
     id: "project6",
     title: "projects.items.6.title",
     description: "projects.items.6.description",
-    image: "https://images.unsplash.com/photo-1590644178409-870d0e775c1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "infrastructure"
   },
   
@@ -121,14 +121,14 @@ export const projects: Project[] = [
     id: "project7",
     title: "Commercial Building Development",
     description: "Construction of a modern commercial building in Tirana with advanced energy efficiency features",
-    image: "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "construction"
   },
   {
     id: "project8",
     title: "Residential Complex",
     description: "Development of a multi-unit residential complex with community amenities and green spaces",
-    image: "https://images.unsplash.com/photo-1485627941502-d2e6429a8af0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1590939000647-0f0df15512ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "construction"
   },
   
@@ -137,14 +137,14 @@ export const projects: Project[] = [
     id: "project9",
     title: "Stone Quarry Operation",
     description: "Responsible extraction and processing of high-quality stone for construction projects",
-    image: "https://images.unsplash.com/photo-1563185628-6945b77896c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1578222414036-92e5c3f48841?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "mining"
   },
   {
     id: "project10",
     title: "Gravel Mining and Processing",
     description: "Extraction and processing of gravel for construction and infrastructure projects in Albania",
-    image: "https://images.unsplash.com/photo-1569950044272-e04b4b26300a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1581093804475-577d72e3cda0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "mining"
   },
   
