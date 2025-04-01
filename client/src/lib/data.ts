@@ -75,7 +75,7 @@ export const projects: Project[] = [
     id: "project1",
     title: "projects.items.1.title",
     description: "projects.items.1.description",
-    image: "https://images.unsplash.com/photo-1574706475510-f0d2d6d4c5fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1605295982588-8546431a5915?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "river-works"
   },
   {
@@ -89,21 +89,21 @@ export const projects: Project[] = [
     id: "project3",
     title: "projects.items.3.title",
     description: "projects.items.3.description",
-    image: "https://images.unsplash.com/photo-1575262272681-65a3c6c8129a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1617469165786-8007eda3caa7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "river-works"
   },
   {
     id: "project4",
     title: "projects.items.4.title",
     description: "projects.items.4.description",
-    image: "https://images.unsplash.com/photo-1572495754162-86bb7ea9080a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "river-works"
   },
   {
     id: "project5",
     title: "projects.items.5.title",
     description: "projects.items.5.description",
-    image: "https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1589475462048-195c6e037d1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "river-works"
   },
   
@@ -112,7 +112,7 @@ export const projects: Project[] = [
     id: "project6",
     title: "projects.items.6.title",
     description: "projects.items.6.description",
-    image: "https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1545459720-aac8509eb02c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "infrastructure"
   },
   
@@ -121,14 +121,14 @@ export const projects: Project[] = [
     id: "project7",
     title: "Commercial Building Development",
     description: "Construction of a modern commercial building in Tirana with advanced energy efficiency features",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "construction"
   },
   {
     id: "project8",
     title: "Residential Complex",
     description: "Development of a multi-unit residential complex with community amenities and green spaces",
-    image: "https://images.unsplash.com/photo-1590939000647-0f0df15512ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "construction"
   },
   
@@ -137,14 +137,14 @@ export const projects: Project[] = [
     id: "project9",
     title: "Stone Quarry Operation",
     description: "Responsible extraction and processing of high-quality stone for construction projects",
-    image: "https://images.unsplash.com/photo-1578222414036-92e5c3f48841?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1518435238342-52309336dd7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "mining"
   },
   {
     id: "project10",
     title: "Gravel Mining and Processing",
     description: "Extraction and processing of gravel for construction and infrastructure projects in Albania",
-    image: "https://images.unsplash.com/photo-1581093804475-577d72e3cda0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1598439210625-5325a7c11cc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "mining"
   },
   
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     id: "project11",
     title: "Road Construction Project",
     description: "Construction and rehabilitation of rural roads connecting communities in northern Albania",
-    image: "https://images.unsplash.com/photo-1573052905904-34ad8c27f0cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1530085107377-5aa1d0f7bc1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     category: "infrastructure"
   },
   {
