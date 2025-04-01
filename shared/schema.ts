@@ -55,9 +55,3 @@ export const contactFormSchema = z.object({
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;
-
-export type Message = ContactFormData & {
-  id: number;
-  createdAt: string;
-  read: string;
-};

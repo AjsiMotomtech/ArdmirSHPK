@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Message } from "@/lib/types";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -22,39 +20,6 @@ const AdminPanel = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [services, setServices] = useState<Service[]>([]);
   const [heroSlides, setHeroSlides] = useState<HeroSlide[]>([]);
-  const queryClient = useQueryClient();
-
-  // Fetch messages
-  const { data: messages } = useQuery<Message[]>({
-    queryKey: ['messages'],
-    queryFn: async () => {
-      const response = await fetch('/api/messages');
-      if (!response.ok) {
-        throw new Error('Failed to fetch messages');
-      }
-      return response.json();
-    }
-  });
-
-  // Mark message as read
-  const markAsReadMutation = useMutation({
-    mutationFn: async (messageId: number) => {
-      const response = await fetch(`/api/messages/${messageId}/read`, {
-        method: 'PATCH'
-      });
-      if (!response.ok) {
-        throw new Error('Failed to mark message as read');
-      }
-      return response.json();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['messages'] });
-    }
-  });
-
-  const handleMarkAsRead = (messageId: number) => {
-    markAsReadMutation.mutate(messageId);
-  };
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
@@ -234,11 +199,10 @@ const AdminPanel = () => {
         </CardHeader>
         <CardContent className="pt-6">
           <Tabs defaultValue="projects">
-            <TabsList className="grid grid-cols-4 mb-8">
+            <TabsList className="grid grid-cols-3 mb-8">
               <TabsTrigger value="projects">Projects</TabsTrigger>
               <TabsTrigger value="services">Services</TabsTrigger>
               <TabsTrigger value="hero">Hero Slides</TabsTrigger>
-              <TabsTrigger value="messages">Messages</TabsTrigger>
             </TabsList>
 
             {/* Projects Tab */}
@@ -575,43 +539,6 @@ const AdminPanel = () => {
                       </Button>
                     </div>
                   </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            {/* Messages Tab */}
-            <TabsContent value="messages">
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium mb-4">Contact Form Messages</h3>
-                <div className="space-y-4 max-h-[600px] overflow-y-auto">
-                  {messages?.map((message) => (
-                    <div 
-                      key={message.id} 
-                      className={`p-4 rounded-lg bg-white border ${message.read === "true" ? 'border-gray-200' : 'border-[#e67e22]'}`}
-                    >
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-medium text-lg">{message.subject}</h4>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleMarkAsRead(message.id)}
-                          className={message.read === "true" ? 'text-gray-400' : 'text-[#e67e22]'}
-                        >
-                          {message.read === "true" ? 'Read' : 'Mark as Read'}
-                        </Button>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-2">From: {message.name} ({message.email})</p>
-                      <p className="text-gray-700 whitespace-pre-wrap">{message.message}</p>
-                      <div className="mt-2 text-sm text-gray-500">
-                        Received: {new Date(message.createdAt).toLocaleString()}
-                      </div>
-                    </div>
-                  ))}
-                  {(!messages || messages.length === 0) && (
-                    <div className="text-center py-8 text-gray-500">
-                      No messages received yet
-                    </div>
-                  )}
                 </div>
               </div>
             </TabsContent>
