@@ -167,8 +167,8 @@ const ContactSection = () => {
               </h4>
               
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <FormField
                       control={form.control}
                       name="name"
@@ -230,8 +230,8 @@ const ContactSection = () => {
                         <FormControl>
                           <Textarea 
                             {...field} 
-                            rows={5}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a365d]"
+                            rows={8}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a365d] min-h-[200px]"
                           />
                         </FormControl>
                         <FormMessage />
