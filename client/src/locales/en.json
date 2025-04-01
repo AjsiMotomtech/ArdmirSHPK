@@ -7,19 +7,19 @@
     "contact": "Contact"
   },
   "hero": {
-    "welcome": "Welcome to Ardmir",
+    "welcome": "Welcome to Ardmir Shpk",
     "slides": {
       "1": {
-        "title": "Building Your Future",
-        "description": "Expertise in construction, infrastructure, trade, industry and more"
+        "title": "Excellence Since 1991",
+        "description": "Expertise in construction, infrastructure works, river protection, mining and industry"
       },
       "2": {
-        "title": "Modern Technology & Equipment",
-        "description": "Representing the most advanced heavy industrial machinery on the market"
+        "title": "Modern Fleet & Equipment",
+        "description": "Operating an extensive fleet of specialized machinery including Caterpillar, Liebherr, and Volvo equipment"
       },
       "3": {
-        "title": "International Trade",
-        "description": "Import and export of goods for national and international markets"
+        "title": "Mining License No.1577",
+        "description": "Official limestone exploitation license for both planar and massive limestone extraction"
       }
     },
     "servicesButton": "Our Services",
@@ -28,8 +28,8 @@
   "about": {
     "subtitle": "About Us",
     "title": "Success Story in Construction & Industry",
-    "paragraph1": "Ardmir Shpk is a multifunctional business with extensive experience in various fields including construction, international trade, mining and material production, as well as industrial services.",
-    "paragraph2": "Since its foundation, we have completed important projects throughout the country, bringing high standards of quality, innovation and reliability to every aspect of our work.",
+    "paragraph1": "Ardmir Shpk originated as a family business founded in 1991 by Mr. Përparim Çobo. The company has evolved from agricultural machinery to become a multifaceted business specializing in construction, infrastructure works, mining, and industrial services.",
+    "paragraph2": "Since its official establishment on January 4, 2008, we've completed important projects throughout Albania, including river protection works, infrastructure development, and mining operations with our Mining License No.1577 dated 07.09.2012 for limestone exploitation.",
     "stats": {
       "years": "Years Experience",
       "projects": "Completed Projects",
@@ -46,27 +46,27 @@
     "items": {
       "import": {
         "title": "Import & Export / Trade",
-        "description": "Import and export of goods, including transportation equipment (excavators, spare parts, etc.), and retail trade of machinery components, oils, and greases. We specialize in importing and exporting transportation vehicles and equipment for construction and industrial purposes."
+        "description": "Import and export of goods, including transportation vehicles, excavators, and heavy machinery for construction purposes. We also offer retail trade of machinery components, spare parts, oils, and greases for industrial equipment."
       },
       "construction": {
         "title": "Construction & Infrastructure",
-        "description": "Implementation of construction projects including earthworks, masonry, reinforced concrete, demolition, system installations, road construction, asphalt paving, installation of concrete plants, gas pipelines, civil buildings, canalization works, and art structures."
+        "description": "Implementation of various construction projects including earthworks, masonry, reinforced concrete, demolition, road construction, asphalt paving, gas pipelines, civil buildings, canalization works, and artistic structures. We've successfully completed numerous river protection works across Albania."
       },
       "mining": {
         "title": "Mining & Material Production",
-        "description": "Exploitation of limestone, operation of quarries and gravel pits, concrete production, production of inert and construction materials in retail and wholesale quantities, establishment and operation of concrete plants."
+        "description": "Exploitation of limestone (planar and massive) with Mining License No.1577 dated 07.09.2012. We operate quarries and gravel pits, produce concrete through our concrete plant, and offer various inert materials for construction in retail and wholesale quantities."
       },
       "machinery": {
         "title": "Heavy Machinery & Industrial Services",
-        "description": "Sale and leasing of trucks and construction vehicles including concrete mixers, concrete pumps, demolition hammers. We also provide installation, assembly, and disassembly services for industrial equipment, energy production, and distribution systems, including medium and high voltage lines."
+        "description": "We own and operate a comprehensive fleet including Liebherr, Caterpillar, and Volvo excavators, bulldozers, concrete mixers, dump trucks, and specialized equipment. Our services include installation and maintenance of energy production and distribution systems, including medium and high voltage lines."
       },
       "additional": {
         "title": "Additional Services",
-        "description": "Green area maintenance, maritime constructions, deep port works, wood and metal production, road transport of construction aggregates and various goods for third parties both domestically and internationally."
+        "description": "We provide services in green area maintenance, maritime constructions, deep port works, wood and metal production. Our transport services include road transport of construction materials and various goods for third parties both domestically and internationally."
       },
       "agriculture": {
         "title": "Agricultural Products",
-        "description": "Collection point for trading, packaging and export of agricultural products (fruits and vegetables) for domestic and international markets, ensuring product quality and freshness."
+        "description": "Collection point for trading, packaging and export of agricultural products (fruits and vegetables) for domestic and international markets, ensuring product quality and freshness throughout the supply chain."
       }
     }
   },
@@ -84,32 +84,32 @@
       "construction": "Construction",
       "infrastructure": "Infrastructure",
       "mining": "Mining",
-      "industrial": "Industrial"
+      "river-works": "River Protection Works"
     },
     "items": {
       "1": {
-        "title": "Modern Residential Complex",
-        "description": "Complete construction of a modern residential complex with 120 apartments"
+        "title": "Drinos River Bed Deepening",
+        "description": "Works on deepening the riverbed of Drinos river in Gjirokastër (Subcontractor for Salillari)"
       },
       "2": {
-        "title": "National Road",
-        "description": "Construction and paving of 25 km of national road with European standards"
+        "title": "Vjosë River Protection Works",
+        "description": "Works on the panels of the Vjosë river, Novoselë and Seman river, Suk zone, Agacaj, Fier (Contractor for the Public Agency)"
       },
       "3": {
-        "title": "Granite Quarry",
-        "description": "Operation of modern quarries for the extraction of high quality granite"
+        "title": "Shkumbin River Emergency Elevation",
+        "description": "Emergency elevation works on the embankment of the Shkumbin river (Contractor for the Public Agency)"
       },
       "4": {
-        "title": "Concrete Factory",
-        "description": "Construction and operation of a modern concrete factory with a capacity of 120m³/hour"
+        "title": "Kalasë River Protection",
+        "description": "Protection from the Kalasë River (First phase problematic segment) as the main contractor for the public entity"
       },
       "5": {
-        "title": "Gas Station",
-        "description": "Complete construction of a modern gas station with full facilities"
+        "title": "Osum River Protection Works",
+        "description": "Protection from flooding from the Osum river in Uznovë, Berat (Subcontractor for Salillari)"
       },
       "6": {
-        "title": "Port Works",
-        "description": "Expansion and renovation of port infrastructure with international standards"
+        "title": "Morinë-Prishtinë Highway",
+        "description": "Subcontractor in Kosovo with SEO-COM for the Morinë-Prishtinë Highway"
       }
     }
   },
@@ -119,19 +119,19 @@
     "clientPortrait": "Client Portrait",
     "items": {
       "1": {
-        "name": "Besnik Krasniqi",
-        "position": "Development Director, Albi Construction",
-        "text": "Ardmir Shpk completed our residential complex project in record time and with exceptional quality. Their professionalism, punctuality and continuous communication exceeded our expectations."
+        "name": "Salillari Construction",
+        "position": "Partner Company",
+        "text": "Ardmir Shpk has been an excellent subcontractor for our river protection projects. Their extensive fleet of specialized equipment and experienced staff have consistently delivered high-quality work within challenging timelines."
       },
       "2": {
-        "name": "Lindita Berisha",
-        "position": "Operational Director, Infratech Kosovo",
-        "text": "The equipment we imported through Ardmir Shpk is of the highest quality in the market. Their customer service and technical support have been outstanding. We will definitely continue the cooperation."
+        "name": "Albanian Public Agency",
+        "position": "Government Entity",
+        "text": "The river protection works completed by Ardmir Shpk have met all technical specifications and quality standards. Their attention to detail and dedication to environmental protection during construction has been exemplary."
       },
       "3": {
-        "name": "Arben Gashi",
-        "position": "Director of Urbanism, Municipality of Gjakova",
-        "text": "The infrastructure works carried out by Ardmir Shpk for our municipality have been of an exceptionally high standard. Their team of engineers and workers is dedicated and capable of solving any technical challenge."
+        "name": "Municipality of Dimal",
+        "position": "Local Government",
+        "text": "Our collaboration with Ardmir Shpk on protection works from the Osum river erosion in the Dafina area has been highly successful. Their technical expertise and quick response have helped prevent significant potential damage to our community."
       }
     }
   },
@@ -151,12 +151,12 @@
       "title": "Contact Information",
       "address": {
         "title": "Our Address",
-        "content": "Rr. Ibrahim Rugova, Nr. 120, 10000 Prishtinë, Kosovo"
+        "content": "Berat, Ura Vajgurore, KONISBALTË, Lagjja 'Konizbaltë', rruga kryesore"
       },
       "phone": {
         "title": "Call Us",
-        "primary": "0696054333",
-        "secondary": ""
+        "primary": "+355 67 20 20 433",
+        "secondary": "0696054333"
       },
       "email": {
         "title": "Email",
@@ -204,8 +204,8 @@
     },
     "contact": {
       "title": "Contact Us",
-      "address": "Rr. Ibrahim Rugova, Nr. 120, 10000 Prishtinë, Kosovo",
-      "phone": "0696054333",
+      "address": "Berat, Ura Vajgurore, KONISBALTË, Lagjja 'Konizbaltë', rruga kryesore",
+      "phone": "+355 67 20 20 433",
       "email": "ardmirshpk@yahoo.com",
       "hours": "Monday - Friday: 8:00 - 17:00"
     },

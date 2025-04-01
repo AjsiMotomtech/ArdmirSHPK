@@ -233,7 +233,7 @@ const AdminPanel = () => {
                         title: "",
                         description: "",
                         image: "",
-                        category: "construction"
+                        category: "river-works"
                       });
                     }}
                   >
@@ -286,7 +286,7 @@ const AdminPanel = () => {
                     <div>
                       <Label htmlFor="project-category">Category</Label>
                       <Select 
-                        value={projectForm.category as string || "construction"}
+                        value={projectForm.category as string || "river-works"}
                         onValueChange={(value) => handleProjectChange("category", value)}
                       >
                         <SelectTrigger id="project-category">
@@ -296,7 +296,7 @@ const AdminPanel = () => {
                           <SelectItem value="construction">Construction</SelectItem>
                           <SelectItem value="infrastructure">Infrastructure</SelectItem>
                           <SelectItem value="mining">Mining</SelectItem>
-                          <SelectItem value="industrial">Industrial</SelectItem>
+                          <SelectItem value="river-works">River Protection Works</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

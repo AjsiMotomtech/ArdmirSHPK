@@ -1,4 +1,4 @@
-export type ProjectCategory = "construction" | "infrastructure" | "mining" | "industrial";
+export type ProjectCategory = "construction" | "infrastructure" | "mining" | "river-works";
 
 export interface HeroSlide {
   id: string;

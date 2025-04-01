@@ -22,10 +22,10 @@ export const heroSlides: HeroSlide[] = [
 ];
 
 export const aboutStats: AboutStat[] = [
-  { value: "15+", label: "about.stats.years" },
-  { value: "150+", label: "about.stats.projects" },
-  { value: "50+", label: "about.stats.professionals" },
-  { value: "12+", label: "about.stats.partners" }
+  { value: "33+", label: "about.stats.years" },
+  { value: "100+", label: "about.stats.projects" },
+  { value: "30+", label: "about.stats.professionals" },
+  { value: "10+", label: "about.stats.partners" }
 ];
 
 export const services: Service[] = [
@@ -67,7 +67,7 @@ export const services: Service[] = [
   }
 ];
 
-export const projectCategories: ProjectCategory[] = ["construction", "infrastructure", "mining", "industrial"];
+export const projectCategories: ProjectCategory[] = ["construction", "infrastructure", "mining", "river-works"];
 
 export const projects: Project[] = [
   {
@@ -75,35 +75,35 @@ export const projects: Project[] = [
     title: "projects.items.1.title",
     description: "projects.items.1.description",
     image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    category: "construction"
+    category: "river-works"
   },
   {
     id: "project2",
     title: "projects.items.2.title",
     description: "projects.items.2.description",
     image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    category: "infrastructure"
+    category: "river-works"
   },
   {
     id: "project3",
     title: "projects.items.3.title",
     description: "projects.items.3.description",
     image: "https://images.unsplash.com/photo-1518873247959-c0989882d335?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    category: "mining"
+    category: "river-works"
   },
   {
     id: "project4",
     title: "projects.items.4.title",
     description: "projects.items.4.description",
     image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    category: "industrial"
+    category: "river-works"
   },
   {
     id: "project5",
     title: "projects.items.5.title",
     description: "projects.items.5.description",
     image: "https://images.unsplash.com/photo-1590502593747-42a996133562?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    category: "construction"
+    category: "river-works"
   },
   {
     id: "project6",

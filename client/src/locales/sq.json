@@ -7,19 +7,19 @@
     "contact": "Kontakt"
   },
   "hero": {
-    "welcome": "Mirë se vini në Ardmir",
+    "welcome": "Mirë se vini në Ardmir Shpk",
     "slides": {
       "1": {
-        "title": "Ndërtojmë të ardhmen tuaj",
-        "description": "Ekspertizë në ndërtim, infrastrukturë, tregti, industri dhe shumë më tepër"
+        "title": "Ekspertizë që nga 1991",
+        "description": "Ekspertizë në ndërtim, punime infrastrukturore, mbrojtje lumenjsh, miniera dhe industri"
       },
       "2": {
-        "title": "Teknologji & Pajisje Moderne",
-        "description": "Përfaqësojmë makineritë e rënda industriale më të avancuara në treg"
+        "title": "Flotë & Pajisje Moderne",
+        "description": "Operojmë një flotë të gjerë makinash të specializuara përfshirë pajisje Caterpillar, Liebherr dhe Volvo"
       },
       "3": {
-        "title": "Tregti Ndërkombëtare",
-        "description": "Import dhe eksport i mallrave për tregun kombëtar dhe ndërkombëtar"
+        "title": "Licencë Miniere Nr.1577",
+        "description": "Licencë zyrtare për shfrytëzimin e gurëve gëlqerorë (planar dhe masiv)"
       }
     },
     "servicesButton": "Shërbimet Tona",
@@ -28,8 +28,8 @@
   "about": {
     "subtitle": "Rreth Nesh",
     "title": "Histori Suksesi Në Ndërtim & Industri",
-    "paragraph1": "Ardmir Shpk është një biznes shumëfunksional me përvojë të gjerë në fusha të ndryshme përfshirë ndërtimin, tregtinë ndërkombëtare, minierat dhe prodhimin e materialeve, si dhe shërbimet industriale.",
-    "paragraph2": "Që nga themelimi, kemi realizuar projekte të rëndësishme në të gjithë vendin, duke sjellë standarde të larta të cilësisë, inovacionit dhe besueshmërisë në çdo aspekt të punës sonë.",
+    "paragraph1": "Ardmir Shpk u krijua si një biznes familjar i themeluar në vitin 1991 nga Z. Përparim Çobo. Kompania është zhvilluar nga makineri bujqësore për t'u bërë një biznes shumëfunksional i specializuar në ndërtim, punime infrastrukturore, miniera dhe shërbime industriale.",
+    "paragraph2": "Që nga themelimi zyrtar më 4 janar 2008, kemi realizuar projekte të rëndësishme në të gjithë Shqipërinë, duke përfshirë punime mbrojtëse të lumenjve, zhvillime infrastrukturore dhe operacione minierash me Licencën tonë të Minierave Nr.1577 të datës 07.09.2012 për shfrytëzimin e gurëve gëlqerorë.",
     "stats": {
       "years": "Vite Eksperiencë",
       "projects": "Projekte të Realizuara",
@@ -84,32 +84,32 @@
       "construction": "Ndërtim",
       "infrastructure": "Infrastrukturë",
       "mining": "Miniera",
-      "industrial": "Industriale"
+      "river-works": "Punime Mbrojtëse Lumenjsh"
     },
     "items": {
       "1": {
-        "title": "Kompleks Banimi Modern",
-        "description": "Ndërtim i plotë i një kompleksi banimi modern me 120 apartamente"
+        "title": "Thellimi i Shtratit të Lumit Drinos",
+        "description": "Punime për thellimin e shtratit të lumit Drinos në Gjirokastër (Nënkontraktor për Salillari)"
       },
       "2": {
-        "title": "Rrugë Nacionale",
-        "description": "Ndërtim dhe asfaltim i 25 km rrugë nacionale me standarde evropiane"
+        "title": "Punime Mbrojtëse në Lumin Vjosë",
+        "description": "Punime në panelet e lumit Vjosë, Novoselë dhe të lumit Seman, zona Suk, Agacaj, Fier (Kontraktor për Agjencinë Publike)"
       },
       "3": {
-        "title": "Gurore Graniti",
-        "description": "Operimi i guroreve moderne për nxjerrjen e granitit të cilësisë së lartë"
+        "title": "Ngritje Emergjente e Digave të Shkumbinit",
+        "description": "Punime emergjente për ngritjen e digave të lumit Shkumbin (Kontraktor për Agjencinë Publike)"
       },
       "4": {
-        "title": "Fabrikë Betoni",
-        "description": "Ndërtim dhe operim i fabrikës moderne të betonit me kapacitet 120m³/orë"
+        "title": "Mbrojtje nga Lumi i Kalasë",
+        "description": "Mbrojtje nga Lumi i Kalasë (Faza e parë segmenti problematik) si kontraktori kryesor për entin publik"
       },
       "5": {
-        "title": "Stacion Karburanti",
-        "description": "Ndërtim i plotë i stacionit modern të karburantit me facilitet të plota"
+        "title": "Punime Mbrojtëse në Lumin Osum",
+        "description": "Mbrojtje nga përmbytjet e lumit Osum në Uznovë, Berat (Nënkontraktor për Salillari)"
       },
       "6": {
-        "title": "Punime Portuale",
-        "description": "Zgjerim dhe rinovim i infrastrukturës portuale me standarde ndërkombëtare"
+        "title": "Autostrada Morinë-Prishtinë",
+        "description": "Nënkontraktor në Kosovë me SEO-COM për autostradën Morinë-Prishtinë"
       }
     }
   },
@@ -119,19 +119,19 @@
     "clientPortrait": "Portreti i klientit",
     "items": {
       "1": {
-        "name": "Besnik Krasniqi",
-        "position": "Drejtor i Zhvillimit, Albi Construction",
-        "text": "Ardmir Shpk ka realizuar projektin tonë të kompleksit të banimit në një kohë rekord dhe me një cilësi të jashtëzakonshme. Profesionalizmi i tyre, përpikmëria dhe komunikimi i vazhdueshëm i ka tejkaluar pritshmëritë tona."
+        "name": "Salillari Construction",
+        "position": "Kompani Partnere",
+        "text": "Ardmir Shpk ka qenë një nënkontraktor i shkëlqyer për projektet tona të mbrojtjes së lumenjve. Flota e tyre e gjerë e pajisjeve të specializuara dhe stafi me përvojë kanë ofruar vazhdimisht punë të cilësisë së lartë brenda afateve sfiduese."
       },
       "2": {
-        "name": "Lindita Berisha",
-        "position": "Drejtoreshë Operacionale, Infratech Kosovo",
-        "text": "Pajisjet që kemi importuar nëpërmjet Ardmir Shpk janë të cilësisë më të lartë në treg. Shërbimi i tyre i klientit dhe mbështetja teknike kanë qenë të jashtëzakonshme. Definitivisht do të vazhdojmë bashkëpunimin."
+        "name": "Agjencia Publike Shqiptare",
+        "position": "Entitet Qeveritar",
+        "text": "Punimet e mbrojtjes së lumenjve të kryera nga Ardmir Shpk kanë përmbushur të gjitha specifikimet teknike dhe standardet e cilësisë. Vëmendja e tyre ndaj detajeve dhe përkushtimi ndaj mbrojtjes së mjedisit gjatë ndërtimit ka qenë shembullore."
       },
       "3": {
-        "name": "Arben Gashi",
-        "position": "Drejtor i Urbanizmit, Komuna e Gjakovës",
-        "text": "Punët infrastrukturore të kryera nga Ardmir Shpk për komunën tonë kanë qenë të një standardi jashtëzakonisht të lartë. Ekipi i tyre i inxhinierëve dhe punëtorëve është i përkushtuar dhe i aftë për të zgjidhur çdo sfidë teknike."
+        "name": "Bashkia e Dimalit",
+        "position": "Qeveria Lokale",
+        "text": "Bashkëpunimi ynë me Ardmir Shpk në punimet mbrojtëse nga erozioni i lumit Osum në zonën e Dafinës ka qenë shumë i suksesshëm. Ekspertiza e tyre teknike dhe reagimi i shpejtë kanë ndihmuar në parandalimin e dëmeve të konsiderueshme potenciale për komunitetin tonë."
       }
     }
   },
@@ -151,7 +151,7 @@
       "title": "Informacione Kontakti",
       "address": {
         "title": "Adresa jonë",
-        "content": "Rr. Ibrahim Rugova, Nr. 120, 10000 Prishtinë, Kosovë"
+        "content": "Berat, Ura Vajgurore, KONISBALTË, Lagjja 'Konizbaltë', rruga kryesore"
       },
       "phone": {
         "title": "Na telefononi",
@@ -204,8 +204,8 @@
     },
     "contact": {
       "title": "Na Kontaktoni",
-      "address": "Rr. Ibrahim Rugova, Nr. 120, 10000 Prishtinë, Kosovë",
-      "phone": "0696054333",
+      "address": "Berat, Ura Vajgurore, KONISBALTË, Lagjja 'Konizbaltë', rruga kryesore",
+      "phone": "+355 67 20 20 433",
       "email": "ardmirshpk@yahoo.com",
       "hours": "E Hënë - E Premte: 8:00 - 17:00"
     },
