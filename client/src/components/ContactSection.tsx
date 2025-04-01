@@ -1,91 +1,43 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import { useForm, ValidationError } from '@formspree/react';
 import { useToast } from "@/hooks/use-toast";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
-
-// Contact form validation schema
-const contactFormSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  subject: z.string().min(2, {
-    message: "Subject must be at least 2 characters.",
-  }),
-  message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
-  }),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
+import { useEffect, useState } from "react";
 
 const ContactSection = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Initialize form with validation
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    },
-  });
-
-  // Handle form submission
-  async function onSubmit(data: ContactFormValues) {
-    setIsSubmitting(true);
-    
-    try {
-      // Get Formspree form ID from environment variables
-      const formId = import.meta.env.FORMSPREE_FORM_ID;
-      
-      // Submit form data to Formspree
-      const response = await fetch(`https://formspree.io/f/${formId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        // Reset form on successful submission
-        form.reset();
-        
-        // Show success toast notification
-        toast({
-          title: t("contact.success.title"),
-          description: t("contact.success.message"),
-        });
-      } else {
-        throw new Error("Form submission failed");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      
-      // Show error toast notification
+  
+  // Initialize Formspree form with your form ID
+  const [state, handleSubmit] = useForm("xjkyabzg");
+  const [showSuccess, setShowSuccess] = useState(false);
+  
+  // Show success message when form is successfully submitted
+  useEffect(() => {
+    if (state.succeeded) {
+      setShowSuccess(true);
       toast({
-        title: t("contact.error.title"),
-        description: t("contact.error.message"),
-        variant: "destructive",
+        title: t("contact.success.title"),
+        description: t("contact.success.message"),
       });
-    } finally {
-      setIsSubmitting(false);
     }
-  }
+  }, [state.succeeded, t, toast]);
+  
+  // Reset success state after 5 seconds
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    if (showSuccess) {
+      timer = setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+    }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [showSuccess]);
 
   return (
     <section id="kontakt" className="py-20 bg-white">
@@ -107,88 +59,74 @@ const ContactSection = () => {
                 {t("contact.form.title")}
               </h4>
               
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              {showSuccess ? (
+                <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+                  <h4 className="font-medium text-green-700 text-lg mb-2">{t("contact.success.title")}</h4>
+                  <p className="text-green-600">{t("contact.success.message")}</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>{t("contact.form.name")}</FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field} 
-                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a365d]"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>{t("contact.form.email")}</FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field} 
-                              type="email"
-                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a365d]"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                        {t("contact.form.name")}
+                      </label>
+                      <Input 
+                        id="name"
+                        name="name"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a365d]"
+                      />
+                      <ValidationError prefix={t("contact.form.name")} field="name" errors={state.errors} className="mt-1 text-sm text-red-600" />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                        {t("contact.form.email")}
+                      </label>
+                      <Input 
+                        id="email"
+                        name="email"
+                        type="email"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a365d]"
+                      />
+                      <ValidationError prefix={t("contact.form.email")} field="email" errors={state.errors} className="mt-1 text-sm text-red-600" />
+                    </div>
                   </div>
                   
-                  <FormField
-                    control={form.control}
-                    name="subject"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t("contact.form.subject")}</FormLabel>
-                        <FormControl>
-                          <Input 
-                            {...field} 
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a365d]"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                      {t("contact.form.subject")}
+                    </label>
+                    <Input 
+                      id="subject"
+                      name="subject"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a365d]"
+                    />
+                    <ValidationError prefix={t("contact.form.subject")} field="subject" errors={state.errors} className="mt-1 text-sm text-red-600" />
+                  </div>
                   
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t("contact.form.message")}</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            {...field} 
-                            rows={5}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a365d]"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                      {t("contact.form.message")}
+                    </label>
+                    <Textarea 
+                      id="message"
+                      name="message"
+                      rows={5}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a365d]"
+                    />
+                    <ValidationError prefix={t("contact.form.message")} field="message" errors={state.errors} className="mt-1 text-sm text-red-600" />
+                  </div>
                   
                   <Button 
                     type="submit" 
                     className="bg-[#e67e22] hover:bg-[#d35400] text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full"
-                    disabled={isSubmitting}
+                    disabled={state.submitting}
                   >
-                    {isSubmitting ? t("contact.form.sending") : t("contact.form.submit")}
+                    {state.submitting ? t("contact.form.sending") : t("contact.form.submit")}
                   </Button>
                 </form>
-              </Form>
+              )}
             </div>
           </div>
           
