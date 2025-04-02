@@ -7,11 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { Project, Service, HeroSlide, ProjectCategory } from "@/lib/types";
+import { Project, Service, HeroSlide } from "@/lib/types";
 import { useToast } from "@/hooks/use-toast";
 import { 
   getProjects, getServices,
-  updateProject, updateService
+  updateProject, updateService, getHeroSlides, updateSlide
 } from "@/lib/dataService";
 
 const AdminPanel = () => {
@@ -19,29 +19,23 @@ const AdminPanel = () => {
   const { toast } = useToast();
   const [projects, setProjects] = useState<Project[]>([]);
   const [services, setServices] = useState<Service[]>([]);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<any[]>([]);
+  const [heroSlides, setHeroSlides] = useState<HeroSlide[]>([]);
 
   // Initialize forms
   const [projectForm, setProjectForm] = useState<Partial<Project>>({});
   const [serviceForm, setServiceForm] = useState<Partial<Service>>({});
-  
+  const [slideForm, setSlideForm] = useState<Partial<HeroSlide>>({});
+
   // Initialize selected states
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const [selectedSlide, setSelectedSlide] = useState<HeroSlide | null>(null);
 
   // Ensure data is always an array
   const ensureArray = <T,>(data: T[] | null | undefined): T[] => {
     return Array.isArray(data) ? data : [];
   };
-
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [selectedService, setSelectedService] = useState(null);
-  const [selectedSlide, setSelectedSlide] = useState(null);
-
-  // Form states
-  const [projectForm, setProjectForm] = useState({});
-  const [serviceForm, setServiceForm] = useState({});
-  const [slideForm, setSlideForm] = useState({});
 
   // Load data
   useEffect(() => {
@@ -49,14 +43,16 @@ const AdminPanel = () => {
       try {
         const projectsData = await getProjects();
         const servicesData = await getServices();
+        const heroSlidesData = await getHeroSlides();
 
-        // Use ensureArray to guarantee that we always have arrays
-        setProjects(Array.isArray(projectsData) ? projectsData : []);
-        setServices(Array.isArray(servicesData) ? servicesData : []);
+        setProjects(ensureArray(projectsData));
+        setServices(ensureArray(servicesData));
+        setHeroSlides(ensureArray(heroSlidesData));
       } catch (error) {
         console.error("Error loading data:", error);
         setProjects([]);
         setServices([]);
+        setHeroSlides([]);
       }
     };
 
@@ -64,17 +60,16 @@ const AdminPanel = () => {
   }, []);
 
   // Handle selecting an item for editing
-  const handleSelectProject = (project) => {
+  const handleSelectProject = (project: Project) => {
     setSelectedProject(project);
     setProjectForm({ 
       ...project,
-      // If the title is a translation key, try to resolve it
       title: project.title?.startsWith("projects.") ? t(project.title) : project.title,
       description: project.description?.startsWith("projects.") ? t(project.description) : project.description
     });
   };
 
-  const handleSelectService = (service) => {
+  const handleSelectService = (service: Service) => {
     setSelectedService(service);
     setServiceForm({ 
       ...service,
@@ -83,7 +78,7 @@ const AdminPanel = () => {
     });
   };
 
-  const handleSelectSlide = (slide) => {
+  const handleSelectSlide = (slide: HeroSlide) => {
     setSelectedSlide(slide);
     setSlideForm({ 
       ...slide,
@@ -93,19 +88,19 @@ const AdminPanel = () => {
   };
 
   // Handle form input changes
-  const handleProjectChange = (field, value) => {
+  const handleProjectChange = (field: string, value: string) => {
     setProjectForm({ ...projectForm, [field]: value });
   };
 
-  const handleServiceChange = (field, value) => {
+  const handleServiceChange = (field: string, value: string) => {
     setServiceForm({ ...serviceForm, [field]: value });
   };
 
-  const handleSlideChange = (field, value) => {
+  const handleSlideChange = (field: string, value: string) => {
     setSlideForm({ ...slideForm, [field]: value });
   };
 
-  // Save functions that actually update data
+  // Save functions
   const saveProject = async () => {
     if (!projectForm.title || !projectForm.description || !projectForm.image || !projectForm.category) {
       toast({
@@ -116,33 +111,36 @@ const AdminPanel = () => {
       return;
     }
 
-    // Ensure we have a complete project object
-    const completeProject = {
-      id: projectForm.id || `project${ensureArray(projects).length + 1}`,
-      title: projectForm.title,
-      description: projectForm.description,
-      image: projectForm.image,
-      category: projectForm.category
-    };
+    try {
+      const completeProject = {
+        id: projectForm.id || `project${projects.length + 1}`,
+        title: projectForm.title,
+        description: projectForm.description,
+        image: projectForm.image,
+        category: projectForm.category as string
+      };
 
-    // Update the project in our data service
-    await updateProject(completeProject);
+      await updateProject(completeProject);
+      const updatedProjects = await getProjects();
+      setProjects(ensureArray(updatedProjects));
 
-    // Refresh the projects list
-    const updatedProjects = await getProjects();
-    setProjects(Array.isArray(updatedProjects) ? updatedProjects : []);
+      toast({
+        title: "Project saved",
+        description: "The project has been saved successfully",
+      });
 
-    toast({
-      title: "Project saved",
-      description: "The project has been saved successfully",
-    });
-
-    // Reset selection
-    setSelectedProject(null);
-    setProjectForm({});
+      setSelectedProject(null);
+      setProjectForm({});
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to save project",
+        variant: "destructive"
+      });
+    }
   };
 
-  const saveService = () => {
+  const saveService = async () => {
     if (!serviceForm.title || !serviceForm.description || !serviceForm.icon) {
       toast({
         title: "Missing fields",
@@ -152,31 +150,35 @@ const AdminPanel = () => {
       return;
     }
 
-    // Ensure we have a complete service object
-    const completeService = {
-      id: serviceForm.id || `service${ensureArray(services).length + 1}`,
-      title: serviceForm.title,
-      description: serviceForm.description,
-      icon: serviceForm.icon
-    };
+    try {
+      const completeService = {
+        id: serviceForm.id || `service${services.length + 1}`,
+        title: serviceForm.title,
+        description: serviceForm.description,
+        icon: serviceForm.icon
+      };
 
-    // Update the service in our data service
-    updateService(completeService);
+      await updateService(completeService);
+      const updatedServices = await getServices();
+      setServices(ensureArray(updatedServices));
 
-    // Refresh the services list
-    const updatedServices = getServices();
-    setServices(ensureArray(updatedServices));
+      toast({
+        title: "Service saved",
+        description: "The service has been saved successfully",
+      });
 
-    toast({
-      title: "Service saved",
-      description: "The service has been saved successfully",
-    });
-
-    setSelectedService(null);
-    setServiceForm({});
+      setSelectedService(null);
+      setServiceForm({});
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to save service",
+        variant: "destructive"
+      });
+    }
   };
 
-  const saveSlide = () => {
+  const saveSlide = async () => {
     if (!slideForm.title || !slideForm.description || !slideForm.image) {
       toast({
         title: "Missing fields",
@@ -186,35 +188,54 @@ const AdminPanel = () => {
       return;
     }
 
-    // Ensure we have a complete slide object
-    const completeSlide = {
-      id: slideForm.id || `slide${ensureArray(heroSlides).length + 1}`,
-      title: slideForm.title,
-      description: slideForm.description,
-      image: slideForm.image
-    };
+    try {
+      const completeSlide = {
+        id: slideForm.id || `slide${heroSlides.length + 1}`,
+        title: slideForm.title,
+        description: slideForm.description,
+        image: slideForm.image
+      };
 
-    // Update the slide in our data service
-    updateSlide(completeSlide);
+      await updateSlide(completeSlide);
+      const updatedSlides = await getHeroSlides();
+      setHeroSlides(ensureArray(updatedSlides));
 
-    // Refresh the slides list
-    const updatedSlides = getSlides();
-    setHeroSlides(ensureArray(updatedSlides));
+      toast({
+        title: "Slide saved",
+        description: "The slide has been saved successfully",
+      });
 
-    toast({
-      title: "Slide saved",
-      description: "The slide has been saved successfully",
-    });
-
-    setSelectedSlide(null);
-    setSlideForm({});
+      setSelectedSlide(null);
+      setSlideForm({});
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to save slide",
+        variant: "destructive"
+      });
+    }
   };
 
-  const deleteProject = (projectId) => {
-    // Implementation to delete project from your data source.
-    // This is a placeholder, replace with your actual deletion logic.
-    const updatedProjects = ensureArray(projects).filter((project) => project.id !== projectId);
-    setProjects(updatedProjects);
+  const deleteProject = async (projectId: string) => {
+    try {
+      // Implementation to delete project from your data source
+      const updatedProjects = projects.filter((project) => project.id !== projectId);
+      setProjects(updatedProjects);
+
+      toast({
+        title: "Project deleted",
+        description: "The project has been deleted successfully",
+      });
+
+      setSelectedProject(null);
+      setProjectForm({});
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to delete project",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -229,6 +250,7 @@ const AdminPanel = () => {
             <TabsList className="grid grid-cols-2 mb-8">
               <TabsTrigger value="projects">Projects</TabsTrigger>
               <TabsTrigger value="services">Services</TabsTrigger>
+              <TabsTrigger value="slides">Slides</TabsTrigger>
             </TabsList>
 
             {/* Projects Tab */}
@@ -255,7 +277,7 @@ const AdminPanel = () => {
                     onClick={() => {
                       setSelectedProject(null);
                       setProjectForm({
-                        id: `project${ensureArray(projects).length + 1}`,
+                        id: `project${projects.length + 1}`,
                         title: "",
                         description: "",
                         image: "",
@@ -349,14 +371,6 @@ const AdminPanel = () => {
                           onClick={() => {
                             if (window.confirm('Are you sure you want to delete this project?')) {
                               deleteProject(selectedProject.id);
-                              const updatedProjects = getProjects();
-                              setProjects(ensureArray(updatedProjects));
-                              setSelectedProject(null);
-                              setProjectForm({});
-                              toast({
-                                title: "Project deleted",
-                                description: "The project has been deleted successfully",
-                              });
                             }
                           }}
                         >
@@ -393,7 +407,7 @@ const AdminPanel = () => {
                     onClick={() => {
                       setSelectedService(null);
                       setServiceForm({
-                        id: `service${ensureArray(services).length + 1}`,
+                        id: `service${services.length + 1}`,
                         title: "",
                         description: "",
                         icon: ""
@@ -469,25 +483,8 @@ const AdminPanel = () => {
               </div>
             </TabsContent>
 
-            {/* Messages Tab */}
-            <TabsContent value="messages">
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium mb-4">Contact Messages</h3>
-                <div className="space-y-4 max-h-[600px] overflow-y-auto">
-                  {messages.map((message) => (
-                    <div key={message.id} className="bg-white p-4 rounded-lg shadow">
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-medium text-lg">{message.subject}</h4>
-                        <span className="text-sm text-gray-500">{new Date(message.createdAt).toLocaleString()}</span>
-                      </div>
-                      <div className="mb-2">
-                        <p className="text-sm text-gray-600">From: {message.name} ({message.email})</p>
-                      </div>
-                      <p className="text-gray-700 whitespace-pre-wrap">{message.message}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            {/* Slides Tab */}
+            <TabsContent value="slides">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="md:col-span-1 bg-gray-50 p-4 rounded-lg">
                   <h3 className="text-lg font-medium mb-4">Select Slide to Edit</h3>
@@ -512,7 +509,7 @@ const AdminPanel = () => {
                     onClick={() => {
                       setSelectedSlide(null);
                       setSlideForm({
-                        id: `slide${ensureArray(heroSlides).length + 1}`,
+                        id: `slide${heroSlides.length + 1}`,
                         title: "",
                         description: "",
                         image: ""
@@ -583,6 +580,27 @@ const AdminPanel = () => {
                       </Button>
                     </div>
                   </div>
+                </div>
+              </div>
+            </TabsContent>
+
+            {/* Messages Tab */}
+            <TabsContent value="messages">
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium mb-4">Contact Messages</h3>
+                <div className="space-y-4 max-h-[600px] overflow-y-auto">
+                  {messages.map((message) => (
+                    <div key={message.id} className="bg-white p-4 rounded-lg shadow">
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="font-medium text-lg">{message.subject}</h4>
+                        <span className="text-sm text-gray-500">{new Date(message.createdAt).toLocaleString()}</span>
+                      </div>
+                      <div className="mb-2">
+                        <p className="text-sm text-gray-600">From: {message.name} ({message.email})</p>
+                      </div>
+                      <p className="text-gray-700 whitespace-pre-wrap">{message.message}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </TabsContent>
