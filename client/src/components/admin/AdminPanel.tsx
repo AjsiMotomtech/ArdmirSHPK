@@ -101,7 +101,7 @@ const AdminPanel = () => {
   };
 
   // Save functions that actually update data
-  const saveProject = () => {
+  const saveProject = async () => {
     if (!projectForm.title || !projectForm.description || !projectForm.image || !projectForm.category) {
       toast({
         title: "Missing fields",
@@ -121,11 +121,11 @@ const AdminPanel = () => {
     };
 
     // Update the project in our data service
-    updateProject(completeProject);
+    await updateProject(completeProject);
 
     // Refresh the projects list
-    const updatedProjects = getProjects();
-    setProjects(ensureArray(updatedProjects));
+    const updatedProjects = await getProjects();
+    setProjects(Array.isArray(updatedProjects) ? updatedProjects : []);
 
     toast({
       title: "Project saved",
