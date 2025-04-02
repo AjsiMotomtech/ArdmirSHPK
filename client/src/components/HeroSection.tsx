@@ -24,7 +24,7 @@ const HeroSection = () => {
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1));
-  }, []);
+  }, [heroSlides.length]);
 
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
@@ -70,7 +70,6 @@ const HeroSection = () => {
           ))}
         </AnimatePresence>
 
-        {/* Welcome Text - Fixed on top of slides */}
         <div className="absolute inset-0 z-20">
           <div className="container mx-auto px-4 h-full flex items-center justify-center">
             <div className="text-center">
@@ -105,7 +104,6 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Slider Navigation */}
         <div className="absolute bottom-8 left-0 right-0 flex justify-center space-x-3 z-30">
           {heroSlides.map((_, index) => (
             <button

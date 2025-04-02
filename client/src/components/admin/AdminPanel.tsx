@@ -21,8 +21,16 @@ const AdminPanel = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
 
+  // Initialize forms
+  const [projectForm, setProjectForm] = useState<Partial<Project>>({});
+  const [serviceForm, setServiceForm] = useState<Partial<Service>>({});
+  
+  // Initialize selected states
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
+
   // Ensure data is always an array
-  const ensureArray = (data) => {
+  const ensureArray = <T,>(data: T[] | null | undefined): T[] => {
     return Array.isArray(data) ? data : [];
   };
 
