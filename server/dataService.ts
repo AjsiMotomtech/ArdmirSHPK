@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { Project, Service, HeroSlide, Testimonial, ProjectCategory } from '@shared/schema';
+import { Project, Service, HeroSlide, Testimonial, ProjectCategory, Message, ContactFormData } from '@shared/schema';
 
 // Get the directory path for the current module in ESM
 const __filename = fileURLToPath(import.meta.url);
@@ -290,6 +290,69 @@ export function updateAboutStats(stats: any[]): boolean {
   
   // Update the stats
   data.aboutStats = stats;
+  
+  // Write updated data back to the file
+  return writeDataFile(data);
+}
+
+// Messages API
+export function getMessages(): Message[] {
+  const data = readDataFile();
+  return data?.messages || [];
+}
+
+export function getMessage(id: string): Message | undefined {
+  const messages = getMessages();
+  return messages.find(message => message.id === id);
+}
+
+export function createMessage(formData: ContactFormData): Message | null {
+  const data = readDataFile();
+  if (!data) return null;
+  
+  // If messages array doesn't exist yet, create it
+  if (!data.messages) {
+    data.messages = [];
+  }
+  
+  // Create a new message object with ID and timestamp
+  const newMessage: Message = {
+    id: `message-${new Date().getTime()}`,
+    name: formData.name,
+    email: formData.email,
+    subject: formData.subject,
+    message: formData.message,
+    createdAt: new Date().toISOString()
+  };
+  
+  // Add the new message to the messages array
+  data.messages.push(newMessage);
+  
+  // Write updated data back to the file
+  if (writeDataFile(data)) {
+    return newMessage;
+  }
+  
+  return null;
+}
+
+export function deleteMessage(id: string): boolean {
+  const data = readDataFile();
+  if (!data) return false;
+  
+  // If messages array doesn't exist, nothing to delete
+  if (!data.messages) {
+    return false;
+  }
+  
+  // Filter out the message to delete
+  const initialLength = data.messages.length;
+  data.messages = data.messages.filter((m: Message) => m.id !== id);
+  
+  // If no message was removed, return false
+  if (data.messages.length === initialLength) {
+    return false;
+  }
   
   // Write updated data back to the file
   return writeDataFile(data);

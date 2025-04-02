@@ -95,3 +95,15 @@ export const aboutStatSchema = z.object({
 });
 
 export type AboutStat = z.infer<typeof aboutStatSchema>;
+
+// Define Message schema
+export const messageSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string().email(),
+  subject: z.string(),
+  message: z.string(),
+  createdAt: z.string().datetime(),
+});
+
+export type Message = z.infer<typeof messageSchema>;

@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useForm, ValidationError } from '@formspree/react';
 import { useToast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
+import { createMessage } from "@/lib/dataService";
 
 const ContactSection = () => {
   const { t } = useTranslation();
@@ -14,9 +15,9 @@ const ContactSection = () => {
   // Initialize Formspree form with your form ID
   const [state, handleSubmit] = useForm("xjkyabzg");
   
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
+    const formData = new FormData(e.target);
     const message = {
       name: formData.get('name') as string,
       email: formData.get('email') as string,
@@ -25,10 +26,22 @@ const ContactSection = () => {
     };
     
     try {
-      await createMessage(message);
-      handleSubmit(e);
+      // First, send the form using Formspree
+      const formspreeSubmission = handleSubmit(e as any);
+      
+      // Then save the message in our system
+      const result = await createMessage(message);
+      
+      if (!result) {
+        console.error('Failed to save message in the system');
+      }
     } catch (error) {
       console.error('Error saving message:', error);
+      toast({
+        title: t("contact.error.title"),
+        description: t("contact.error.message"),
+        variant: "destructive"
+      });
     }
   };
   const [showSuccess, setShowSuccess] = useState(false);

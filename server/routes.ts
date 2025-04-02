@@ -39,6 +39,83 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
+  
+  // ==== Messages API ====
+  
+  // Get all messages
+  app.get("/api/messages", (req: Request, res: Response) => {
+    try {
+      const messages = dataService.getMessages();
+      res.json(messages);
+    } catch (error) {
+      console.error("Error getting messages:", error);
+      res.status(500).json({ 
+        success: false, 
+        message: "Failed to get messages" 
+      });
+    }
+  });
+  
+  // Create a new message
+  app.post("/api/messages", (req: Request, res: Response) => {
+    try {
+      // Validate the request body
+      const validatedData = contactFormSchema.parse(req.body);
+      
+      // Create the message
+      const createdMessage = dataService.createMessage(validatedData);
+      
+      if (createdMessage) {
+        // Also send email notification
+        sendContactEmail(validatedData).catch(err => {
+          console.error("Failed to send email notification:", err);
+        });
+        
+        res.status(201).json(createdMessage);
+      } else {
+        res.status(500).json({ 
+          success: false, 
+          message: "Failed to create message" 
+        });
+      }
+    } catch (error) {
+      console.error("Error creating message:", error);
+      
+      if (error && typeof error === 'object' && 'name' in error && error.name === "ZodError") {
+        const validationError = fromZodError(error as any);
+        return res.status(400).json({ 
+          success: false, 
+          message: validationError.message 
+        });
+      }
+      
+      res.status(500).json({ 
+        success: false, 
+        message: "Failed to create message" 
+      });
+    }
+  });
+  
+  // Delete a message
+  app.delete("/api/messages/:id", (req: Request, res: Response) => {
+    try {
+      const success = dataService.deleteMessage(req.params.id);
+      if (success) {
+        res.json({ success: true });
+      } else {
+        res.status(404).json({ 
+          success: false, 
+          message: "Message not found or delete failed" 
+        });
+      }
+    } catch (error) {
+      console.error("Error deleting message:", error);
+      res.status(500).json({ 
+        success: false, 
+        message: "Failed to delete message" 
+      });
+    }
+  });
 
   // ==== Projects API ====
   
