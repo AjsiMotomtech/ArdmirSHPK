@@ -21,7 +21,25 @@ const AdminPanel = () => {
   const { toast } = useToast();
   const [projects, setProjects] = useState<Project[]>([]);
   const [services, setServices] = useState<Service[]>([]);
-  const [messages, setMessages] = useState<any[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
+
+  // Delete message handler
+  const deleteMessage = async (id: string) => {
+    try {
+      await fetch(`/api/messages/${id}`, { method: 'DELETE' });
+      setMessages(messages.filter(msg => msg.id !== id));
+      toast({
+        title: "Message deleted",
+        description: "The message has been deleted successfully",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to delete message",
+        variant: "destructive"
+      });
+    }
+  };
 
   // Initialize forms
   const [projectForm, setProjectForm] = useState<Partial<Project>>({});
@@ -53,6 +71,22 @@ const AdminPanel = () => {
     };
 
     loadData();
+    
+    // Load messages
+    const loadMessages = async () => {
+      try {
+        const response = await fetch('/api/messages');
+        if (response.ok) {
+          const messagesData = await response.json();
+          setMessages(messagesData);
+        }
+      } catch (error) {
+        console.error("Error loading messages:", error);
+        setMessages([]);
+      }
+    };
+    
+    loadMessages();
   }, []);
 
   // Handle selecting an item for editing
@@ -192,9 +226,10 @@ const AdminPanel = () => {
         </CardHeader>
         <CardContent className="pt-6">
           <Tabs defaultValue="projects">
-            <TabsList className="grid grid-cols-2 mb-8">
+            <TabsList className="grid grid-cols-3 mb-8">
               <TabsTrigger value="projects">Projects</TabsTrigger>
               <TabsTrigger value="services">Services</TabsTrigger>
+              <TabsTrigger value="messages">Messages</TabsTrigger>
             </TabsList>
 
             {/* Projects Tab */}
@@ -439,6 +474,44 @@ const AdminPanel = () => {
                       </div>
                       <div className="mb-2">
                         <p className="text-sm text-gray-600">From: {message.name} ({message.email})</p>
+                      </div>
+                      <p className="text-gray-700 whitespace-pre-wrap">{message.message}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </TabsContent>
+
+            {/* Messages Tab */}
+            <TabsContent value="messages">
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium mb-4">Contact Messages</h3>
+                <div className="space-y-4 max-h-[600px] overflow-y-auto">
+                  {messages.map((message) => (
+                    <div key={message.id} className="bg-white p-4 rounded-lg shadow">
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="font-medium text-lg">{message.subject}</h4>
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm text-gray-500">
+                            {new Date(message.createdAt).toLocaleString()}
+                          </span>
+                          <Button
+                            variant="destructive"
+                            size="sm"
+                            onClick={() => {
+                              if (window.confirm('Are you sure you want to delete this message?')) {
+                                deleteMessage(message.id);
+                              }
+                            }}
+                          >
+                            Delete
+                          </Button>
+                        </div>
+                      </div>
+                      <div className="mb-2">
+                        <p className="text-sm text-gray-600">
+                          From: {message.name} ({message.email})
+                        </p>
                       </div>
                       <p className="text-gray-700 whitespace-pre-wrap">{message.message}</p>
                     </div>
