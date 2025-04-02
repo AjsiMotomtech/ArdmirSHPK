@@ -37,6 +37,15 @@ export interface AboutStat {
   label: string;
 }
 
+export interface Message {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  createdAt: string;
+}
+
 export interface ContactFormData {
   name: string;
   email: string;

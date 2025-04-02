@@ -13,6 +13,24 @@ const ContactSection = () => {
   
   // Initialize Formspree form with your form ID
   const [state, handleSubmit] = useForm("xjkyabzg");
+  
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const message = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      subject: formData.get('subject') as string,
+      message: formData.get('message') as string,
+    };
+    
+    try {
+      await createMessage(message);
+      handleSubmit(e);
+    } catch (error) {
+      console.error('Error saving message:', error);
+    }
+  };
   const [showSuccess, setShowSuccess] = useState(false);
   
   // Show success message when form is successfully submitted
@@ -65,7 +83,7 @@ const ContactSection = () => {
                   <p className="text-green-600">{t("contact.success.message")}</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={onSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">

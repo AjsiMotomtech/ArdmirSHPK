@@ -1,6 +1,7 @@
-import { Project, Service, HeroSlide, ProjectCategory, AboutStat, Testimonial } from "./types";
+import { Project, Service, ProjectCategory, AboutStat, Testimonial, Message } from "./types";
 import { apiRequest } from "./queryClient";
 import { projects as fallbackProjects, services as fallbackServices, heroSlides as fallbackSlides } from "./data";
+import { ContactFormData } from "./components/ContactForm"; // Assuming this type exists
 
 // Collection of real titles from i18n (to be populated when available)
 const realTitles: Record<string, string> = {};
@@ -131,64 +132,6 @@ export const deleteService = async (id: string): Promise<boolean> => {
   }
 };
 
-// Hero slide operations
-export const getSlides = async (): Promise<HeroSlide[]> => {
-  try {
-    const response = await apiRequest<HeroSlide[]>('/api/slides');
-    return response || fallbackSlides;
-  } catch (error) {
-    console.error('Error fetching slides:', error);
-    return fallbackSlides;
-  }
-};
-
-export const getSlide = async (id: string): Promise<HeroSlide | undefined> => {
-  try {
-    const response = await apiRequest<HeroSlide>(`/api/slides/${id}`);
-    return response;
-  } catch (error) {
-    console.error(`Error fetching slide ${id}:`, error);
-    return fallbackSlides.find(s => s.id === id);
-  }
-};
-
-export const createSlide = async (slide: Omit<HeroSlide, 'id'>): Promise<HeroSlide | null> => {
-  try {
-    const response = await apiRequest<HeroSlide>('/api/slides', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(slide)
-    });
-    return response;
-  } catch (error) {
-    console.error('Error creating slide:', error);
-    return null;
-  }
-};
-
-export const updateSlide = async (updatedSlide: HeroSlide): Promise<HeroSlide | null> => {
-  try {
-    const response = await apiRequest<HeroSlide>(`/api/slides/${updatedSlide.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updatedSlide)
-    });
-    return response;
-  } catch (error) {
-    console.error(`Error updating slide ${updatedSlide.id}:`, error);
-    return null;
-  }
-};
-
-export const deleteSlide = async (id: string): Promise<boolean> => {
-  try {
-    await apiRequest(`/api/slides/${id}`, { method: 'DELETE' });
-    return true;
-  } catch (error) {
-    console.error(`Error deleting slide ${id}:`, error);
-    return false;
-  }
-};
 
 // Project categories operations
 export const getProjectCategories = async (): Promise<ProjectCategory[]> => {
@@ -239,6 +182,38 @@ export const updateAboutStats = async (stats: AboutStat[]): Promise<boolean> => 
     return false;
   }
 };
+
+// Message operations
+export const getMessages = async (): Promise<Message[]> => {
+  try {
+    const response = await fetch('/api/messages');
+    if (!response.ok) {
+      return [];
+    }
+    return response.json();
+  } catch (error) {
+    console.error('Error fetching messages:', error);
+    return [];
+  }
+};
+
+export const createMessage = async (message: ContactFormData): Promise<Message | null> => {
+  try {
+    const response = await fetch('/api/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(message)
+    });
+    if (!response.ok) {
+      return null;
+    }
+    return response.json();
+  } catch (error) {
+    console.error('Error creating message:', error);
+    return null;
+  }
+};
+
 
 // Title mapping functions
 export const setRealTitle = (key: string, value: string): void => {

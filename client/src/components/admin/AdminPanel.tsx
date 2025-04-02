@@ -19,7 +19,7 @@ const AdminPanel = () => {
   const { toast } = useToast();
   const [projects, setProjects] = useState([]);
   const [services, setServices] = useState([]);
-  const [heroSlides, setHeroSlides] = useState([]);
+  const [messages, setMessages] = useState([]);
 
   // Ensure data is always an array
   const ensureArray = (data) => {
@@ -224,7 +224,7 @@ const AdminPanel = () => {
             <TabsList className="grid grid-cols-3 mb-8">
               <TabsTrigger value="projects">Projects</TabsTrigger>
               <TabsTrigger value="services">Services</TabsTrigger>
-              <TabsTrigger value="hero">Hero Slides</TabsTrigger>
+              <TabsTrigger value="messages">Messages</TabsTrigger>
             </TabsList>
 
             {/* Projects Tab */}
@@ -465,8 +465,25 @@ const AdminPanel = () => {
               </div>
             </TabsContent>
 
-            {/* Hero Slides Tab */}
-            <TabsContent value="hero">
+            {/* Messages Tab */}
+            <TabsContent value="messages">
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium mb-4">Contact Messages</h3>
+                <div className="space-y-4 max-h-[600px] overflow-y-auto">
+                  {messages.map((message) => (
+                    <div key={message.id} className="bg-white p-4 rounded-lg shadow">
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="font-medium text-lg">{message.subject}</h4>
+                        <span className="text-sm text-gray-500">{new Date(message.createdAt).toLocaleString()}</span>
+                      </div>
+                      <div className="mb-2">
+                        <p className="text-sm text-gray-600">From: {message.name} ({message.email})</p>
+                      </div>
+                      <p className="text-gray-700 whitespace-pre-wrap">{message.message}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="md:col-span-1 bg-gray-50 p-4 rounded-lg">
                   <h3 className="text-lg font-medium mb-4">Select Slide to Edit</h3>
