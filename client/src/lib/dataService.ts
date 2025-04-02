@@ -1,7 +1,6 @@
-import { Project, Service, ProjectCategory, AboutStat, Testimonial, Message } from "./types";
+import { Project, Service, ProjectCategory, AboutStat, Testimonial, Message, ContactFormData } from "./types";
 import { apiRequest } from "./queryClient";
 import { projects as fallbackProjects, services as fallbackServices, heroSlides as fallbackSlides } from "./data";
-import { ContactFormData } from "./components/ContactForm"; // Assuming this type exists
 
 // Collection of real titles from i18n (to be populated when available)
 const realTitles: Record<string, string> = {};

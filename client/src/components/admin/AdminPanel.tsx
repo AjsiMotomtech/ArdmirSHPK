@@ -7,13 +7,16 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { Project, Service } from "@/lib/types";
+import { Project, Service, Message, ProjectCategory } from "@/lib/types";
 import { useToast } from "@/hooks/use-toast";
 import {
   getProjects,
   getServices,
+  createProject,
   updateProject,
-  updateService
+  updateService,
+  createService,
+  getMessages
 } from "@/lib/dataService";
 
 const AdminPanel = () => {
@@ -134,10 +137,25 @@ const AdminPanel = () => {
         title: projectForm.title,
         description: projectForm.description,
         image: projectForm.image,
-        category: projectForm.category as string
+        category: projectForm.category as ProjectCategory
       };
 
-      await updateProject(completeProject);
+      // Check if we're creating a new project or updating an existing one
+      if (selectedProject) {
+        // Update existing project
+        await updateProject(completeProject);
+      } else {
+        // Create new project
+        const newProject = {
+          title: projectForm.title,
+          description: projectForm.description,
+          image: projectForm.image,
+          category: projectForm.category as ProjectCategory
+        };
+        await createProject(newProject);
+      }
+      
+      // Refresh project list
       const updatedProjects = await getProjects();
       setProjects(ensureArray(updatedProjects));
 
@@ -149,6 +167,7 @@ const AdminPanel = () => {
       setSelectedProject(null);
       setProjectForm({});
     } catch (error) {
+      console.error("Error saving project:", error);
       toast({
         title: "Error",
         description: "Failed to save project",
@@ -175,7 +194,21 @@ const AdminPanel = () => {
         icon: serviceForm.icon
       };
 
-      await updateService(completeService);
+      // Check if we're creating a new service or updating an existing one
+      if (selectedService) {
+        // Update existing service
+        await updateService(completeService);
+      } else {
+        // Create new service
+        const newService = {
+          title: serviceForm.title,
+          description: serviceForm.description,
+          icon: serviceForm.icon
+        };
+        await createService(newService);
+      }
+      
+      // Refresh service list
       const updatedServices = await getServices();
       setServices(ensureArray(updatedServices));
 
@@ -187,6 +220,7 @@ const AdminPanel = () => {
       setSelectedService(null);
       setServiceForm({});
     } catch (error) {
+      console.error("Error saving service:", error);
       toast({
         title: "Error",
         description: "Failed to save service",
@@ -458,26 +492,6 @@ const AdminPanel = () => {
                       </Button>
                     </div>
                   </div>
-                </div>
-              </div>
-            </TabsContent>
-            {/* Messages Tab */}
-            <TabsContent value="messages">
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium mb-4">Contact Messages</h3>
-                <div className="space-y-4 max-h-[600px] overflow-y-auto">
-                  {messages.map((message) => (
-                    <div key={message.id} className="bg-white p-4 rounded-lg shadow">
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-medium text-lg">{message.subject}</h4>
-                        <span className="text-sm text-gray-500">{new Date(message.createdAt).toLocaleString()}</span>
-                      </div>
-                      <div className="mb-2">
-                        <p className="text-sm text-gray-600">From: {message.name} ({message.email})</p>
-                      </div>
-                      <p className="text-gray-700 whitespace-pre-wrap">{message.message}</p>
-                    </div>
-                  ))}
                 </div>
               </div>
             </TabsContent>
