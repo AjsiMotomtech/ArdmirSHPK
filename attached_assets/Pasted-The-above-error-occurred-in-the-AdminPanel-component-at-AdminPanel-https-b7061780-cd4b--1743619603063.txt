@@ -1,0 +1,25 @@
+The above error occurred in the <AdminPanel> component:
+
+    at AdminPanel (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/src/components/admin/AdminPanel.tsx:38:17)
+    at div
+    at Admin (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/src/pages/Admin.tsx:27:39)
+    at Route (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=34ab22ca:323:16)
+    at Switch (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=34ab22ca:379:17)
+    at Router
+    at App (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/src/App.tsx?v=L7OpGSVS0fzE7mPa2UGaN:51:35)
+    at QueryClientProvider (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=34ab22ca:2805:3)
+    at I18nextProvider (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/react-i18next.js?v=34ab22ca:781:3)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+projects.map is not a function
+at AdminPanel (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/src/components/admin/AdminPanel.tsx:230:223)
+at renderWithHooks (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=34ab22ca:11548:26)
+at updateFunctionComponent (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=34ab22ca:14582:28)
+at beginWork (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=34ab22ca:15924:22)
+at beginWork$1 (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=34ab22ca:19753:22)
+at performUnitOfWork (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=34ab22ca:19198:20)
+at workLoopSync (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=34ab22ca:19137:13)
+at renderRootSync (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=34ab22ca:19116:15)
+at recoverFromConcurrentError (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=34ab22ca:18736:28)
+at performSyncWorkOnRoot (https://b7061780-cd4b-4c63-a405-e321be5890fe-00-x642rz34kk7d.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=34ab22ca:18879:28)
