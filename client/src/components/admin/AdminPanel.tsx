@@ -7,11 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { Project, Service, HeroSlide } from "@/lib/types";
+import { Project, Service } from "@/lib/types";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  getProjects, getServices,
-  updateProject, updateService, getHeroSlides, updateSlide
+import {
+  getProjects,
+  getServices,
+  updateProject,
+  updateService
 } from "@/lib/dataService";
 
 const AdminPanel = () => {
@@ -20,17 +22,14 @@ const AdminPanel = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [services, setServices] = useState<Service[]>([]);
   const [messages, setMessages] = useState<any[]>([]);
-  const [heroSlides, setHeroSlides] = useState<HeroSlide[]>([]);
 
   // Initialize forms
   const [projectForm, setProjectForm] = useState<Partial<Project>>({});
   const [serviceForm, setServiceForm] = useState<Partial<Service>>({});
-  const [slideForm, setSlideForm] = useState<Partial<HeroSlide>>({});
 
   // Initialize selected states
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
-  const [selectedSlide, setSelectedSlide] = useState<HeroSlide | null>(null);
 
   // Ensure data is always an array
   const ensureArray = <T,>(data: T[] | null | undefined): T[] => {
@@ -43,16 +42,13 @@ const AdminPanel = () => {
       try {
         const projectsData = await getProjects();
         const servicesData = await getServices();
-        const heroSlidesData = await getHeroSlides();
 
         setProjects(ensureArray(projectsData));
         setServices(ensureArray(servicesData));
-        setHeroSlides(ensureArray(heroSlidesData));
       } catch (error) {
         console.error("Error loading data:", error);
         setProjects([]);
         setServices([]);
-        setHeroSlides([]);
       }
     };
 
@@ -62,7 +58,7 @@ const AdminPanel = () => {
   // Handle selecting an item for editing
   const handleSelectProject = (project: Project) => {
     setSelectedProject(project);
-    setProjectForm({ 
+    setProjectForm({
       ...project,
       title: project.title?.startsWith("projects.") ? t(project.title) : project.title,
       description: project.description?.startsWith("projects.") ? t(project.description) : project.description
@@ -71,19 +67,10 @@ const AdminPanel = () => {
 
   const handleSelectService = (service: Service) => {
     setSelectedService(service);
-    setServiceForm({ 
+    setServiceForm({
       ...service,
       title: service.title?.startsWith("services.") ? t(service.title) : service.title,
-      description: service.description?.startsWith("services.") ? t(service.description) : service.description 
-    });
-  };
-
-  const handleSelectSlide = (slide: HeroSlide) => {
-    setSelectedSlide(slide);
-    setSlideForm({ 
-      ...slide,
-      title: slide.title?.startsWith("hero.") ? t(slide.title) : slide.title,
-      description: slide.description?.startsWith("hero.") ? t(slide.description) : slide.description 
+      description: service.description?.startsWith("services.") ? t(service.description) : service.description
     });
   };
 
@@ -94,10 +81,6 @@ const AdminPanel = () => {
 
   const handleServiceChange = (field: string, value: string) => {
     setServiceForm({ ...serviceForm, [field]: value });
-  };
-
-  const handleSlideChange = (field: string, value: string) => {
-    setSlideForm({ ...slideForm, [field]: value });
   };
 
   // Save functions
@@ -178,44 +161,6 @@ const AdminPanel = () => {
     }
   };
 
-  const saveSlide = async () => {
-    if (!slideForm.title || !slideForm.description || !slideForm.image) {
-      toast({
-        title: "Missing fields",
-        description: "Please fill out all required fields",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    try {
-      const completeSlide = {
-        id: slideForm.id || `slide${heroSlides.length + 1}`,
-        title: slideForm.title,
-        description: slideForm.description,
-        image: slideForm.image
-      };
-
-      await updateSlide(completeSlide);
-      const updatedSlides = await getHeroSlides();
-      setHeroSlides(ensureArray(updatedSlides));
-
-      toast({
-        title: "Slide saved",
-        description: "The slide has been saved successfully",
-      });
-
-      setSelectedSlide(null);
-      setSlideForm({});
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to save slide",
-        variant: "destructive"
-      });
-    }
-  };
-
   const deleteProject = async (projectId: string) => {
     try {
       // Implementation to delete project from your data source
@@ -250,7 +195,6 @@ const AdminPanel = () => {
             <TabsList className="grid grid-cols-2 mb-8">
               <TabsTrigger value="projects">Projects</TabsTrigger>
               <TabsTrigger value="services">Services</TabsTrigger>
-              <TabsTrigger value="slides">Slides</TabsTrigger>
             </TabsList>
 
             {/* Projects Tab */}
@@ -260,7 +204,7 @@ const AdminPanel = () => {
                   <h3 className="text-lg font-medium mb-4">Select Project to Edit</h3>
                   <div className="space-y-2 max-h-[600px] overflow-y-auto">
                     {ensureArray(projects).map((project) => (
-                      <div 
+                      <div
                         key={project.id}
                         className={`p-3 rounded-lg cursor-pointer ${selectedProject?.id === project.id ? 'bg-[#1a365d] text-white' : 'bg-white hover:bg-gray-100'}`}
                         onClick={() => handleSelectProject(project)}
@@ -272,7 +216,7 @@ const AdminPanel = () => {
                       </div>
                     ))}
                   </div>
-                  <Button 
+                  <Button
                     className="w-full mt-4 bg-[#e67e22] hover:bg-[#d35400]"
                     onClick={() => {
                       setSelectedProject(null);
@@ -291,9 +235,9 @@ const AdminPanel = () => {
 
                 <div className="md:col-span-2">
                   <h3 className="text-lg font-medium mb-4">
-                    {selectedProject 
-                      ? `Edit Project: ${selectedProject.title?.startsWith("projects.") 
-                          ? t(selectedProject.title) 
+                    {selectedProject
+                      ? `Edit Project: ${selectedProject.title?.startsWith("projects.")
+                          ? t(selectedProject.title)
                           : selectedProject.title}`
                       : 'Create New Project'
                     }
@@ -302,7 +246,7 @@ const AdminPanel = () => {
                   <div className="space-y-4">
                     <div>
                       <Label htmlFor="project-title">Title</Label>
-                      <Input 
+                      <Input
                         id="project-title"
                         value={projectForm.title || ""}
                         onChange={(e) => handleProjectChange("title", e.target.value)}
@@ -312,7 +256,7 @@ const AdminPanel = () => {
 
                     <div>
                       <Label htmlFor="project-description">Description</Label>
-                      <Textarea 
+                      <Textarea
                         id="project-description"
                         value={projectForm.description || ""}
                         onChange={(e) => handleProjectChange("description", e.target.value)}
@@ -323,7 +267,7 @@ const AdminPanel = () => {
 
                     <div>
                       <Label htmlFor="project-image">Image URL</Label>
-                      <Input 
+                      <Input
                         id="project-image"
                         value={projectForm.image || ""}
                         onChange={(e) => handleProjectChange("image", e.target.value)}
@@ -333,7 +277,7 @@ const AdminPanel = () => {
 
                     <div>
                       <Label htmlFor="project-category">Category</Label>
-                      <Select 
+                      <Select
                         value={projectForm.category || "river-works"}
                         onValueChange={(value) => handleProjectChange("category", value)}
                       >
@@ -350,13 +294,13 @@ const AdminPanel = () => {
                     </div>
 
                     <div className="pt-4 flex space-x-4">
-                      <Button 
+                      <Button
                         className="bg-[#e67e22] hover:bg-[#d35400]"
                         onClick={saveProject}
                       >
                         Save Project
                       </Button>
-                      <Button 
+                      <Button
                         variant="outline"
                         onClick={() => {
                           setSelectedProject(null);
@@ -366,7 +310,7 @@ const AdminPanel = () => {
                         Cancel
                       </Button>
                       {selectedProject && (
-                        <Button 
+                        <Button
                           variant="destructive"
                           onClick={() => {
                             if (window.confirm('Are you sure you want to delete this project?')) {
@@ -390,7 +334,7 @@ const AdminPanel = () => {
                   <h3 className="text-lg font-medium mb-4">Select Service to Edit</h3>
                   <div className="space-y-2 max-h-[600px] overflow-y-auto">
                     {ensureArray(services).map((service) => (
-                      <div 
+                      <div
                         key={service.id}
                         className={`p-3 rounded-lg cursor-pointer ${selectedService?.id === service.id ? 'bg-[#1a365d] text-white' : 'bg-white hover:bg-gray-100'}`}
                         onClick={() => handleSelectService(service)}
@@ -402,7 +346,7 @@ const AdminPanel = () => {
                       </div>
                     ))}
                   </div>
-                  <Button 
+                  <Button
                     className="w-full mt-4 bg-[#e67e22] hover:bg-[#d35400]"
                     onClick={() => {
                       setSelectedService(null);
@@ -420,9 +364,9 @@ const AdminPanel = () => {
 
                 <div className="md:col-span-2">
                   <h3 className="text-lg font-medium mb-4">
-                    {selectedService 
-                      ? `Edit Service: ${selectedService.title?.startsWith("services.") 
-                          ? t(selectedService.title) 
+                    {selectedService
+                      ? `Edit Service: ${selectedService.title?.startsWith("services.")
+                          ? t(selectedService.title)
                           : selectedService.title}`
                       : 'Create New Service'
                     }
@@ -431,7 +375,7 @@ const AdminPanel = () => {
                   <div className="space-y-4">
                     <div>
                       <Label htmlFor="service-title">Title</Label>
-                      <Input 
+                      <Input
                         id="service-title"
                         value={serviceForm.title || ""}
                         onChange={(e) => handleServiceChange("title", e.target.value)}
@@ -441,7 +385,7 @@ const AdminPanel = () => {
 
                     <div>
                       <Label htmlFor="service-description">Description</Label>
-                      <Textarea 
+                      <Textarea
                         id="service-description"
                         value={serviceForm.description || ""}
                         onChange={(e) => handleServiceChange("description", e.target.value)}
@@ -452,7 +396,7 @@ const AdminPanel = () => {
 
                     <div>
                       <Label htmlFor="service-icon">Icon Class</Label>
-                      <Input 
+                      <Input
                         id="service-icon"
                         value={serviceForm.icon || ""}
                         onChange={(e) => handleServiceChange("icon", e.target.value)}
@@ -462,13 +406,13 @@ const AdminPanel = () => {
                     </div>
 
                     <div className="pt-4 flex space-x-4">
-                      <Button 
+                      <Button
                         className="bg-[#e67e22] hover:bg-[#d35400]"
                         onClick={saveService}
                       >
                         Save Service
                       </Button>
-                      <Button 
+                      <Button
                         variant="outline"
                         onClick={() => {
                           setSelectedService(null);
@@ -482,108 +426,6 @@ const AdminPanel = () => {
                 </div>
               </div>
             </TabsContent>
-
-            {/* Slides Tab */}
-            <TabsContent value="slides">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="md:col-span-1 bg-gray-50 p-4 rounded-lg">
-                  <h3 className="text-lg font-medium mb-4">Select Slide to Edit</h3>
-                  <div className="space-y-2 max-h-[600px] overflow-y-auto">
-                    {ensureArray(heroSlides).map((slide) => (
-                      <div 
-                        key={slide.id}
-                        className={`p-3 rounded-lg cursor-pointer ${selectedSlide?.id === slide.id ? 'bg-[#1a365d] text-white' : 'bg-white hover:bg-gray-100'}`}
-                        onClick={() => handleSelectSlide(slide)}
-                      >
-                        <h4 className="font-medium">
-                          {slide.title?.startsWith("hero.") ? t(slide.title) : slide.title}
-                        </h4>
-                        <p className="text-sm truncate">
-                          {slide.description?.startsWith("hero.") ? t(slide.description) : slide.description}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                  <Button 
-                    className="w-full mt-4 bg-[#e67e22] hover:bg-[#d35400]"
-                    onClick={() => {
-                      setSelectedSlide(null);
-                      setSlideForm({
-                        id: `slide${heroSlides.length + 1}`,
-                        title: "",
-                        description: "",
-                        image: ""
-                      });
-                    }}
-                  >
-                    Add New Slide
-                  </Button>
-                </div>
-
-                <div className="md:col-span-2">
-                  <h3 className="text-lg font-medium mb-4">
-                    {selectedSlide 
-                      ? `Edit Slide: ${selectedSlide.title?.startsWith("hero.") 
-                          ? t(selectedSlide.title) 
-                          : selectedSlide.title}`
-                      : 'Create New Slide'
-                    }
-                  </h3>
-
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="slide-title">Title</Label>
-                      <Input 
-                        id="slide-title"
-                        value={slideForm.title || ""}
-                        onChange={(e) => handleSlideChange("title", e.target.value)}
-                        placeholder="Slide title"
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="slide-description">Description</Label>
-                      <Textarea 
-                        id="slide-description"
-                        value={slideForm.description || ""}
-                        onChange={(e) => handleSlideChange("description", e.target.value)}
-                        placeholder="Slide description"
-                        rows={3}
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="slide-image">Background Image URL</Label>
-                      <Input 
-                        id="slide-image"
-                        value={slideForm.image || ""}
-                        onChange={(e) => handleSlideChange("image", e.target.value)}
-                        placeholder="https://example.com/slide-background.jpg"
-                      />
-                    </div>
-
-                    <div className="pt-4 flex space-x-4">
-                      <Button 
-                        className="bg-[#e67e22] hover:bg-[#d35400]"
-                        onClick={saveSlide}
-                      >
-                        Save Slide
-                      </Button>
-                      <Button 
-                        variant="outline"
-                        onClick={() => {
-                          setSelectedSlide(null);
-                          setSlideForm({});
-                        }}
-                      >
-                        Cancel
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
             {/* Messages Tab */}
             <TabsContent value="messages">
               <div className="space-y-4">
