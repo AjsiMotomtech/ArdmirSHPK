@@ -6,7 +6,7 @@ import { projects as fallbackProjects, services as fallbackServices, heroSlides 
 const realTitles: Record<string, string> = {};
 
 // Project operations
-export const getProjects = async () => {
+export const getProjects = async (): Promise<Project[]> => {
   try {
     const response = await fetch('/api/projects');
     if (!response.ok) {

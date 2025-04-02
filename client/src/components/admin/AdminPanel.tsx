@@ -38,13 +38,24 @@ const AdminPanel = () => {
   // Load data
   useEffect(() => {
     const loadData = async () => {
-      const projectsData = await getProjects();
-      const servicesData = await getServices();
-      const slidesData = await getSlides();
-      
-      setProjects(ensureArray(projectsData));
-      setServices(ensureArray(servicesData));
-      setHeroSlides(ensureArray(slidesData));
+      try {
+        setProjects([]); // Initialize with empty array
+        const projectsData = await getProjects();
+        if (Array.isArray(projectsData)) {
+          setProjects(projectsData);
+        }
+
+        const servicesData = await getServices();
+        setServices(Array.isArray(servicesData) ? servicesData : []);
+
+        const slidesData = await getSlides();
+        setHeroSlides(Array.isArray(slidesData) ? slidesData : []);
+      } catch (error) {
+        console.error("Error loading data:", error);
+        setProjects([]);
+        setServices([]);
+        setHeroSlides([]);
+      }
     };
     
     loadData();
