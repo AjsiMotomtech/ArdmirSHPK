@@ -39,17 +39,15 @@ const AdminPanel = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        setProjects([]); // Initialize with empty array
-        const projectsData = await getProjects();
-        if (Array.isArray(projectsData)) {
-          setProjects(projectsData);
-        }
-
-        const servicesData = await getServices();
-        setServices(Array.isArray(servicesData) ? servicesData : []);
-
-        const slidesData = await getSlides();
-        setHeroSlides(Array.isArray(slidesData) ? slidesData : []);
+        const [projectsData, servicesData, slidesData] = await Promise.all([
+          getProjects(),
+          getServices(),
+          getSlides()
+        ]);
+        
+        setProjects(projectsData);
+        setServices(servicesData);
+        setHeroSlides(slidesData);
       } catch (error) {
         console.error("Error loading data:", error);
         setProjects([]);

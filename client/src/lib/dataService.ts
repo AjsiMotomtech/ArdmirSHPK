@@ -10,10 +10,14 @@ export const getProjects = async (): Promise<Project[]> => {
   try {
     const response = await fetch('/api/projects');
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      return [];
     }
     const data = await response.json();
-    return Array.isArray(data) ? data : [];
+    if (!Array.isArray(data)) {
+      console.error('Projects data is not an array:', data);
+      return [];
+    }
+    return data;
   } catch (error) {
     console.error('Error fetching projects:', error);
     return [];
