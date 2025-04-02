@@ -6,13 +6,19 @@ import { projects as fallbackProjects, services as fallbackServices, heroSlides 
 const realTitles: Record<string, string> = {};
 
 // Project operations
-export const getProjects = async (): Promise<Project[]> => {
+export const getProjects = async () => {
   try {
-    const response = await apiRequest<Project[]>('/api/projects');
-    return response || fallbackProjects;
+    const response = await fetch('/api/projects', {
+      method: 'GET'
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error('Error fetching projects:', error);
-    return fallbackProjects;
+    return [];
   }
 };
 

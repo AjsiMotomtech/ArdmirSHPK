@@ -32,9 +32,9 @@ const AdminPanel = () => {
 
   // Load data
   useEffect(() => {
-    setProjects(getProjects());
-    setServices(getServices());
-    setHeroSlides(getSlides());
+    setProjects(getProjects() || []); //Added null check here
+    setServices(getServices() || []); //Added null check here
+    setHeroSlides(getSlides() || []); //Added null check here
   }, []);
 
   // Handle selecting an item for editing
@@ -103,7 +103,7 @@ const AdminPanel = () => {
     updateProject(completeProject);
 
     // Refresh the projects list
-    setProjects(getProjects());
+    setProjects(getProjects() || []); //Added null check here
 
     toast({
       title: "Project saved",
@@ -137,7 +137,7 @@ const AdminPanel = () => {
     updateService(completeService);
 
     // Refresh the services list
-    setServices(getServices());
+    setServices(getServices() || []); //Added null check here
 
     toast({
       title: "Service saved",
@@ -170,7 +170,7 @@ const AdminPanel = () => {
     updateSlide(completeSlide);
 
     // Refresh the slides list
-    setHeroSlides(getSlides());
+    setHeroSlides(getSlides() || []); //Added null check here
 
     toast({
       title: "Slide saved",
@@ -323,7 +323,7 @@ const AdminPanel = () => {
                           onClick={() => {
                             if (window.confirm('Are you sure you want to delete this project?')) {
                               deleteProject(selectedProject.id);
-                              setProjects(getProjects());
+                              setProjects(getProjects() || []); //Added null check here
                               setSelectedProject(null);
                               setProjectForm({});
                               toast({

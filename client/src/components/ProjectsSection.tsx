@@ -13,7 +13,7 @@ const ProjectsSection = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [categories, setCategories] = useState<ProjectCategory[]>(projectCategories);
   const [loading, setLoading] = useState(true);
-  
+
   // Load projects and categories from data service
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +21,7 @@ const ProjectsSection = () => {
         setLoading(true);
         const projectsData = await getProjects();
         setProjects(projectsData);
-        
+
         const categoriesData = await getProjectCategories();
         if (categoriesData && categoriesData.length > 0) {
           setCategories(categoriesData);
@@ -32,7 +32,7 @@ const ProjectsSection = () => {
         setLoading(false);
       }
     };
-    
+
     fetchData();
   }, []);
 
@@ -78,8 +78,8 @@ const ProjectsSection = () => {
   };
 
   const filteredProjects = activeCategory === "all" 
-    ? projects 
-    : projects.filter((project: Project) => project.category === activeCategory);
+    ? (projects || []) 
+    : (projects || []).filter((project: Project) => project.category === activeCategory);
 
   return (
     <section id="projektet" className="py-20 bg-white">
@@ -108,7 +108,7 @@ const ProjectsSection = () => {
             className="w-20 h-1 bg-[#e67e22] mx-auto mt-6"
           ></motion.div>
         </motion.div>
-        
+
         {/* Filter buttons */}
         <motion.div 
           variants={filterVariants}
@@ -124,7 +124,7 @@ const ProjectsSection = () => {
           >
             {t("projects.filters.all")}
           </button>
-          
+
           {categories.map((category) => (
             <button 
               key={category}
@@ -139,14 +139,14 @@ const ProjectsSection = () => {
             </button>
           ))}
         </motion.div>
-        
+
         {/* Loading indicator */}
         {loading && (
           <div className="flex justify-center items-center py-20">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#e67e22]"></div>
           </div>
         )}
-        
+
         {/* Projects Grid */}
         {!loading && (
           <motion.div 
