@@ -79,8 +79,8 @@ const ProjectsSection = () => {
   };
 
   const filteredProjects = activeCategory === "all" 
-    ? projects 
-    : projects.filter((project) => project.category === activeCategory);
+    ? (projects || [])
+    : (projects || []).filter((project) => project.category === activeCategory);
 
   return (
     <section id="projektet" className="py-20 bg-white">

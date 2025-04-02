@@ -21,6 +21,11 @@ const AdminPanel = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [heroSlides, setHeroSlides] = useState<HeroSlide[]>([]);
 
+  // Ensure data is always an array
+  const ensureArray = <T,>(data: T[] | null | undefined): T[] => {
+    return Array.isArray(data) ? data : [];
+  };
+
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedSlide, setSelectedSlide] = useState<HeroSlide | null>(null);
@@ -37,9 +42,9 @@ const AdminPanel = () => {
       const servicesData = await getServices();
       const slidesData = await getSlides();
       
-      setProjects(Array.isArray(projectsData) ? projectsData : []);
-      setServices(Array.isArray(servicesData) ? servicesData : []);
-      setHeroSlides(Array.isArray(slidesData) ? slidesData : []);
+      setProjects(ensureArray(projectsData));
+      setServices(ensureArray(servicesData));
+      setHeroSlides(ensureArray(slidesData));
     };
     
     loadData();
