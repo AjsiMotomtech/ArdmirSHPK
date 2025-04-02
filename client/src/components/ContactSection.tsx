@@ -17,7 +17,8 @@ const ContactSection = () => {
   
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
     const message = {
       name: formData.get('name') as string,
       email: formData.get('email') as string,
@@ -27,19 +28,17 @@ const ContactSection = () => {
     
     try {
       // First, send the form using Formspree
-      const formspreeSubmission = handleSubmit(e as any);
+      handleSubmit(e);
       
       // Then save the message in our system
-      const result = await createMessage(message);
-      
-      if (!result) {
-        console.error('Failed to save message in the system');
-      }
+      await createMessage(message).catch(err => {
+        console.error('Failed to save message in system database:', err);
+      });
     } catch (error) {
-      console.error('Error saving message:', error);
+      console.error('Error processing form submission:', error);
       toast({
-        title: t("contact.error.title"),
-        description: t("contact.error.message"),
+        title: t("contact.error.title") || "Error",
+        description: t("contact.error.message") || "Failed to send your message. Please try again.",
         variant: "destructive"
       });
     }

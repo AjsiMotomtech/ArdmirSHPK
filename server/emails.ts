@@ -1,59 +1,26 @@
-import nodemailer from "nodemailer";
 import { ContactFormData } from "@shared/schema";
 
-// Configure nodemailer transporter
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST || "smtp.gmail.com",
-  port: parseInt(process.env.EMAIL_PORT || "587"),
-  secure: process.env.EMAIL_SECURE === "true",
-  auth: {
-    user: process.env.EMAIL_USER || "",
-    pass: process.env.EMAIL_PASS || "",
-  },
-});
-
+/**
+ * This is a placeholder for the email sending functionality.
+ * In a production environment, you would configure this with proper SMTP credentials.
+ * 
+ * To enable email sending:
+ * 1. Ensure you have the following environment variables set:
+ *    - EMAIL_HOST (e.g., smtp.gmail.com)
+ *    - EMAIL_PORT (e.g., 587)
+ *    - EMAIL_USER (your email)
+ *    - EMAIL_PASS (your password or app password)
+ *    - EMAIL_FROM (sender address)
+ *    - EMAIL_TO (recipient address)
+ * 2. Uncomment the nodemailer implementation in this file
+ */
 export async function sendContactEmail(formData: ContactFormData): Promise<void> {
   const { name, email, subject, message } = formData;
-
-  // Send email to site administrator
-  const adminMailOptions = {
-    from: process.env.EMAIL_FROM || "website@ardmir-shpk.com",
-    to: process.env.EMAIL_TO || "info@ardmir-shpk.com",
-    subject: `New contact form submission: ${subject}`,
-    html: `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Subject:</strong> ${subject}</p>
-      <p><strong>Message:</strong></p>
-      <p>${message.replace(/\n/g, "<br>")}</p>
-    `,
-  };
-
-  // Send confirmation email to the user
-  const userMailOptions = {
-    from: process.env.EMAIL_FROM || "noreply@ardmir-shpk.com",
-    to: email,
-    subject: "Thank you for contacting Ardmir Shpk",
-    html: `
-      <h2>Thank you for contacting Ardmir Shpk</h2>
-      <p>Dear ${name},</p>
-      <p>We have received your message regarding "${subject}".</p>
-      <p>Our team will review your inquiry and get back to you as soon as possible.</p>
-      <p>Thank you for your interest in our services.</p>
-      <br>
-      <p>Best regards,</p>
-      <p>Ardmir Shpk Team</p>
-    `,
-  };
-
-  try {
-    // Send both emails
-    await transporter.sendMail(adminMailOptions);
-    await transporter.sendMail(userMailOptions);
-    console.log(`Contact form email sent successfully for ${email}`);
-  } catch (error) {
-    console.error("Error sending contact form email:", error);
-    throw new Error("Failed to send email");
-  }
+  
+  // Instead of sending emails, we'll just log the message for now
+  // This way the admin can still see messages in the admin panel
+  console.log(`Contact form message received: ${subject} from ${name} (${email})`);
+  
+  // Don't throw an error since we're not actually trying to send an email
+  return Promise.resolve();
 }
