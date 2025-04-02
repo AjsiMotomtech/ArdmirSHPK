@@ -1,66 +1,117 @@
-# Ardmir Shpk Website
+# Ardmir Shpk
 
 A modern, responsive business website for Ardmir Shpk showcasing their diverse portfolio of services across multiple industries with rich visual storytelling and interactive design.
 
-## Features
+## 🌟 Features
 
-- **Responsive Design**: Fully responsive website that looks great on all devices
-- **Multilingual Support**: Bilingual support for Albanian (SQ) and English (EN)
-- **Modern UI**: Clean, professional design with interactive components
-- **Content Management**: Admin panel for managing projects, services, and contact messages
-- **Contact Form**: Integrated contact form with Formspree
-- **Project Showcase**: Display of various projects categorized by industry
+- Modern, responsive design
+- Multi-language support (English and Albanian)
+- Project showcase with filtering capabilities
+- Interactive hero section with image carousel
+- Services overview
+- About section with key statistics
+- Testimonials section
+- Contact form
+- Mobile-friendly navigation
 
-## Technology Stack
+## 🛠️ Tech Stack
 
-- **Frontend**: React, TypeScript, TailwindCSS, Shadcn UI
-- **Backend**: Express.js, Node.js
-- **Translation**: i18next for multilingual support
-- **Form Handling**: @formspree/react for form submissions
-- **State Management**: React Query for data fetching
-- **Routing**: Wouter for client-side routing
-- **Data Storage**: JSON file-based storage for content management
+- **Frontend:**
+  - React 18
+  - TypeScript
+  - Tailwind CSS
+  - Shadcn UI Components
+  - Framer Motion for animations
+  - i18next for internationalization
 
-## Getting Started
+- **Backend:**
+  - Express.js
+  - TypeScript
+  - JSON file-based data storage
+  - RESTful API endpoints
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Run the development server: `npm run dev`
-4. Access the website at: http://localhost:5000
+## 🚀 Getting Started
 
-## Project Structure
+### Prerequisites
 
-- `/client`: Frontend React application
-  - `/src/components`: React components
-  - `/src/lib`: Utility functions and API services
-  - `/src/locales`: Translation files
-  - `/src/pages`: Page components
-- `/server`: Backend Express server
-  - `routes.ts`: API endpoints
-  - `dataService.ts`: Data storage and retrieval
-  - `emails.ts`: Email service
-- `/shared`: Shared schema definitions
+- Node.js (v18 or higher)
+- npm (v9 or higher)
 
-## Admin Panel
+### Installation
 
-To access the admin panel, navigate to `/admin-ardmir` and enter the access code: `ardmir2024`
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/ardmir-shpk.git
+cd ardmir-shpk
+```
 
-The admin panel allows you to:
-- View and manage projects
-- View and manage services
-- View and delete contact messages
+2. Install dependencies:
+```bash
+npm install
+```
 
-## Contact Form
+3. Start the development server:
+```bash
+npm run dev
+```
 
-The contact form integrates with Formspree for email delivery. To configure email settings:
+4. Open your browser and navigate to:
+```
+http://localhost:3000
+```
 
-1. Update the Formspree form ID in `client/src/components/ContactSection.tsx`
-2. Set up email environment variables in production for proper email delivery
+## 📁 Project Structure
 
-## Deployment
+```
+ardmir-shpk/
+├── client/                 # Frontend React application
+│   ├── src/
+│   │   ├── components/    # React components
+│   │   ├── lib/          # Utility functions and data
+│   │   ├── styles/       # Global styles
+│   │   └── types/        # TypeScript type definitions
+├── server/                # Backend Express application
+│   ├── routes/           # API routes
+│   └── data.json         # Project data
+├── public/               # Static assets
+│   └── images/          # Image files
+└── shared/              # Shared types and utilities
+```
 
-The application is ready for deployment on any platform that supports Node.js applications.
+## 🔧 Available Scripts
 
-## License
+- `npm run dev` - Start the development server
+- `npm run build` - Build the project for production
+- `npm start` - Start the production server
+- `npm run check` - Run TypeScript type checking
 
-This project is licensed under the MIT License.
+## 🌐 API Endpoints
+
+- `GET /api/projects` - Get all projects
+- `GET /api/project-categories` - Get project categories
+- `GET /api/services` - Get all services
+- `GET /api/about-stats` - Get about section statistics
+- `GET /api/testimonials` - Get testimonials
+- `POST /api/contact` - Submit contact form
+
+## 📝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Authors
+
+- Ardmir Shpk - Initial work
+
+## 🙏 Acknowledgments
+
+- Shadcn UI for the beautiful component library
+- Unsplash for the stock images
+- All contributors who have helped with the project

@@ -4,19 +4,19 @@
       "id": "slide1",
       "title": "hero.slides.1.title",
       "description": "hero.slides.1.description",
-      "image": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+      "image": "https://images.unsplash.com/photo-1485627941502-d2e6429a8af0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
     },
     {
       "id": "slide2",
       "title": "hero.slides.2.title",
       "description": "hero.slides.2.description",
-      "image": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+      "image": "https://images.unsplash.com/photo-1590644178409-870d0e775c1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
     },
     {
       "id": "slide3",
       "title": "hero.slides.3.title",
       "description": "hero.slides.3.description",
-      "image": "https://images.unsplash.com/photo-1545486332-9e0999ec8636?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+      "image": "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
     }
   ],
   "aboutStats": [
@@ -86,84 +86,84 @@
       "id": "project1",
       "title": "projects.items.1.title",
       "description": "projects.items.1.description",
-      "image": "https://images.unsplash.com/photo-1445964047600-cdbdb873673d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "/images/Picture8.jpg",
       "category": "river-works"
     },
     {
       "id": "project2",
       "title": "projects.items.2.title",
       "description": "projects.items.2.description",
-      "image": "https://images.unsplash.com/photo-1518736114810-3f3bedfec66a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "/images/Picture4.jpg",
       "category": "river-works"
     },
     {
       "id": "project3",
       "title": "projects.items.3.title",
       "description": "projects.items.3.description",
-      "image": "https://images.unsplash.com/photo-1604537529298-53f0d9e9ce21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "/images/Picture5.jpg",
       "category": "river-works"
     },
     {
       "id": "project4",
       "title": "projects.items.4.title",
       "description": "projects.items.4.description",
-      "image": "https://images.unsplash.com/photo-1580332449502-16d8862c61e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "/images/Picture6.jpg",
       "category": "river-works"
     },
     {
       "id": "project5",
       "title": "projects.items.5.title",
       "description": "projects.items.5.description",
-      "image": "https://images.unsplash.com/photo-1541675454750-0d491b7c8acf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "/images/Picture3.jpg",
       "category": "river-works"
     },
     {
       "id": "project6",
       "title": "Autostrada Morinë-Prishtinë",
       "description": "Nënkontraktor në Kosovë me SEO-COM për autostradën Morinë-Prishtinë.",
-      "image": "https://images.unsplash.com/photo-1621974833425-50cdb647b5d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "/images/Picture1.jpg",
       "category": "infrastructure"
     },
     {
       "id": "project7",
       "title": "Commercial Building Development",
       "description": "Construction of a modern commercial building in Tirana with advanced energy efficiency features",
-      "image": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "https://cicconstruction.com/app/uploads/2023/05/the-top-important-differences-between-commercial-and-residential-construction-jpg.webp",
       "category": "construction"
     },
     {
       "id": "project8",
       "title": "Residential Complex",
       "description": "Development of a multi-unit residential complex with community amenities and green spaces",
-      "image": "https://images.unsplash.com/photo-1510265236892-329bfd7de7a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "https://www.americanalarm.com/wp-content/uploads/2022/06/Residential-Construction-Site.jpg",
       "category": "construction"
     },
     {
       "id": "project9",
       "title": "Stone Quarry Operation",
       "description": "Responsible extraction and processing of high-quality stone for construction projects",
-      "image": "https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "https://www.garriock.co.uk/site/assets/files/1082/garriock-sullom-3.358x0-is-hidpi.jpg",
       "category": "mining"
     },
     {
       "id": "project10",
       "title": "Gravel Mining and Processing",
       "description": "Extraction and processing of gravel for construction and infrastructure projects in Albania",
-      "image": "https://images.unsplash.com/photo-1518435252385-1685a3f6e22e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "https://www.garriock.co.uk/site/assets/files/1082/garriock-sullom-1.358x0-is-hidpi.jpg",
       "category": "mining"
     },
     {
       "id": "project11",
       "title": "Road Construction Project",
       "description": "Construction and rehabilitation of rural roads connecting communities in northern Albania",
-      "image": "https://images.unsplash.com/photo-1516822669470-7f8c3c4a3449?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "https://sewellbeard.com/us-72-west-road-project/construction-site-is-laying-new-asphalt-road-pavementroad-construction-workers-and-road-construction-machinery-scene-highway-construction-site-landscape/",
       "category": "infrastructure"
     },
     {
       "id": "project12",
       "title": "Bridge Reconstruction",
       "description": "Strengthening and modernization of aging bridge infrastructure for improved safety",
-      "image": "https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "https://acropolis-wp-content-uploads.s3.us-west-1.amazonaws.com/how-are-bridges-built-hero.webp",
       "category": "infrastructure"
     }
   ],

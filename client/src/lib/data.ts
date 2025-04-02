@@ -75,92 +75,92 @@ export const projects: Project[] = [
     id: "project1",
     title: "projects.items.1.title",
     description: "projects.items.1.description",
-    image: "https://images.unsplash.com/photo-1605295982588-8546431a5915?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "/images/Picture8.jpg",
     category: "river-works"
   },
   {
     id: "project2",
     title: "projects.items.2.title",
     description: "projects.items.2.description",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "/images/Picture4.jpg",
     category: "river-works"
   },
   {
     id: "project3",
     title: "projects.items.3.title",
     description: "projects.items.3.description",
-    image: "https://images.unsplash.com/photo-1617469165786-8007eda3caa7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "/images/Picture5.jpg",
     category: "river-works"
   },
   {
     id: "project4",
     title: "projects.items.4.title",
     description: "projects.items.4.description",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "/images/Picture6.jpg",
     category: "river-works"
   },
   {
     id: "project5",
     title: "projects.items.5.title",
     description: "projects.items.5.description",
-    image: "https://images.unsplash.com/photo-1589475462048-195c6e037d1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "/images/Picture3.jpg",
     category: "river-works"
   },
-  
+
   // Infrastructure Project
   {
     id: "project6",
     title: "projects.items.6.title",
     description: "projects.items.6.description",
-    image: "https://images.unsplash.com/photo-1545459720-aac8509eb02c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "/images/Picture1.jpg",
     category: "infrastructure"
   },
-  
+
   // Construction Projects
   {
     id: "project7",
     title: "Commercial Building Development",
     description: "Construction of a modern commercial building in Tirana with advanced energy efficiency features",
-    image: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://cicconstruction.com/app/uploads/2023/05/the-top-important-differences-between-commercial-and-residential-construction-jpg.webp",
     category: "construction"
   },
   {
     id: "project8",
     title: "Residential Complex",
     description: "Development of a multi-unit residential complex with community amenities and green spaces",
-    image: "https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://www.americanalarm.com/wp-content/uploads/2022/06/Residential-Construction-Site.jpg",
     category: "construction"
   },
-  
+
   // Mining Projects
   {
     id: "project9",
     title: "Stone Quarry Operation",
     description: "Responsible extraction and processing of high-quality stone for construction projects",
-    image: "https://images.unsplash.com/photo-1518435238342-52309336dd7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://www.garriock.co.uk/site/assets/files/1082/garriock-sullom-3.358x0-is-hidpi.jpg",
     category: "mining"
   },
   {
     id: "project10",
     title: "Gravel Mining and Processing",
     description: "Extraction and processing of gravel for construction and infrastructure projects in Albania",
-    image: "https://images.unsplash.com/photo-1598439210625-5325a7c11cc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://www.garriock.co.uk/site/assets/files/1082/garriock-sullom-1.358x0-is-hidpi.jpg",
     category: "mining"
   },
-  
+
   // Additional Infrastructure Projects
   {
     id: "project11",
     title: "Road Construction Project",
     description: "Construction and rehabilitation of rural roads connecting communities in northern Albania",
-    image: "https://images.unsplash.com/photo-1530085107377-5aa1d0f7bc1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://sewellbeard.com/us-72-west-road-project/construction-site-is-laying-new-asphalt-road-pavementroad-construction-workers-and-road-construction-machinery-scene-highway-construction-site-landscape/",
     category: "infrastructure"
   },
   {
     id: "project12",
     title: "Bridge Reconstruction",
     description: "Strengthening and modernization of aging bridge infrastructure for improved safety and capacity",
-    image: "https://images.unsplash.com/photo-1545486332-9e0999ec8636?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://acropolis-wp-content-uploads.s3.us-west-1.amazonaws.com/how-are-bridges-built-hero.webp",
     category: "infrastructure"
   }
 ];
