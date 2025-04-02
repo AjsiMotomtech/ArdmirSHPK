@@ -16,7 +16,9 @@ import {
   updateProject,
   updateService,
   createService,
-  getMessages
+  getMessages,
+  deleteProject as deleteProjectApi,
+  deleteService as deleteServiceApi
 } from "@/lib/dataService";
 
 const AdminPanel = () => {
@@ -231,21 +233,59 @@ const AdminPanel = () => {
 
   const deleteProject = async (projectId: string) => {
     try {
-      // Implementation to delete project from your data source
-      const updatedProjects = projects.filter((project) => project.id !== projectId);
-      setProjects(updatedProjects);
+      // Call API to delete the project
+      const success = await deleteProjectApi(projectId);
+      
+      if (success) {
+        // Update local state after successful deletion
+        const updatedProjects = projects.filter((project) => project.id !== projectId);
+        setProjects(updatedProjects);
 
-      toast({
-        title: "Project deleted",
-        description: "The project has been deleted successfully",
-      });
+        toast({
+          title: "Project deleted",
+          description: "The project has been deleted successfully",
+        });
 
-      setSelectedProject(null);
-      setProjectForm({});
+        setSelectedProject(null);
+        setProjectForm({});
+      } else {
+        throw new Error("Failed to delete project");
+      }
     } catch (error) {
+      console.error("Error deleting project:", error);
       toast({
         title: "Error",
         description: "Failed to delete project",
+        variant: "destructive"
+      });
+    }
+  };
+  
+  const deleteService = async (serviceId: string) => {
+    try {
+      // Call API to delete the service
+      const success = await deleteServiceApi(serviceId);
+      
+      if (success) {
+        // Update local state after successful deletion
+        const updatedServices = services.filter((service) => service.id !== serviceId);
+        setServices(updatedServices);
+
+        toast({
+          title: "Service deleted",
+          description: "The service has been deleted successfully",
+        });
+
+        setSelectedService(null);
+        setServiceForm({});
+      } else {
+        throw new Error("Failed to delete service");
+      }
+    } catch (error) {
+      console.error("Error deleting service:", error);
+      toast({
+        title: "Error",
+        description: "Failed to delete service",
         variant: "destructive"
       });
     }
@@ -490,6 +530,18 @@ const AdminPanel = () => {
                       >
                         Cancel
                       </Button>
+                      {selectedService && (
+                        <Button
+                          variant="destructive"
+                          onClick={() => {
+                            if (window.confirm('Are you sure you want to delete this service?')) {
+                              deleteService(selectedService.id);
+                            }
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </div>
