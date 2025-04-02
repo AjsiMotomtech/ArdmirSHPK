@@ -32,9 +32,17 @@ const AdminPanel = () => {
 
   // Load data
   useEffect(() => {
-    setProjects(getProjects() || []); //Added null check here
-    setServices(getServices() || []); //Added null check here
-    setHeroSlides(getSlides() || []); //Added null check here
+    const loadData = async () => {
+      const projectsData = await getProjects();
+      const servicesData = await getServices();
+      const slidesData = await getSlides();
+      
+      setProjects(Array.isArray(projectsData) ? projectsData : []);
+      setServices(Array.isArray(servicesData) ? servicesData : []);
+      setHeroSlides(Array.isArray(slidesData) ? slidesData : []);
+    };
+    
+    loadData();
   }, []);
 
   // Handle selecting an item for editing

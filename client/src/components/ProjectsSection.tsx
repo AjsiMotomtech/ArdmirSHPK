@@ -20,7 +20,7 @@ const ProjectsSection = () => {
       try {
         setLoading(true);
         const projectsData = await getProjects();
-        setProjects(projectsData);
+        setProjects(Array.isArray(projectsData) ? projectsData : []);
 
         const categoriesData = await getProjectCategories();
         if (categoriesData && categoriesData.length > 0) {
@@ -28,6 +28,7 @@ const ProjectsSection = () => {
         }
       } catch (error) {
         console.error("Error fetching project data:", error);
+        setProjects([]);
       } finally {
         setLoading(false);
       }

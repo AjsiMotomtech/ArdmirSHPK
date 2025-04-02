@@ -8,14 +8,12 @@ const realTitles: Record<string, string> = {};
 // Project operations
 export const getProjects = async () => {
   try {
-    const response = await fetch('/api/projects', {
-      method: 'GET'
-    });
+    const response = await fetch('/api/projects');
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
-    return Array.isArray(data) ? data : [];
+    return data;
   } catch (error) {
     console.error('Error fetching projects:', error);
     return [];
