@@ -10,16 +10,16 @@ import { Label } from "@/components/ui/label";
 import { Project, Service, HeroSlide, ProjectCategory } from "@/lib/types";
 import { useToast } from "@/hooks/use-toast";
 import { 
-  getProjects, getServices, getSlides, 
-  updateProject, updateService, updateSlide
+  getProjects, getServices,
+  updateProject, updateService
 } from "@/lib/dataService";
 
 const AdminPanel = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const [projects, setProjects] = useState([]);
-  const [services, setServices] = useState([]);
-  const [messages, setMessages] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [services, setServices] = useState<Service[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   // Ensure data is always an array
   const ensureArray = (data) => {
@@ -41,17 +41,14 @@ const AdminPanel = () => {
       try {
         const projectsData = await getProjects();
         const servicesData = await getServices();
-        const slidesData = await getSlides();
 
         // Use ensureArray to guarantee that we always have arrays
-        setProjects(ensureArray(projectsData));
-        setServices(ensureArray(servicesData));
-        setHeroSlides(ensureArray(slidesData));
+        setProjects(Array.isArray(projectsData) ? projectsData : []);
+        setServices(Array.isArray(servicesData) ? servicesData : []);
       } catch (error) {
         console.error("Error loading data:", error);
         setProjects([]);
         setServices([]);
-        setHeroSlides([]);
       }
     };
 
@@ -221,10 +218,9 @@ const AdminPanel = () => {
         </CardHeader>
         <CardContent className="pt-6">
           <Tabs defaultValue="projects">
-            <TabsList className="grid grid-cols-3 mb-8">
+            <TabsList className="grid grid-cols-2 mb-8">
               <TabsTrigger value="projects">Projects</TabsTrigger>
               <TabsTrigger value="services">Services</TabsTrigger>
-              <TabsTrigger value="messages">Messages</TabsTrigger>
             </TabsList>
 
             {/* Projects Tab */}

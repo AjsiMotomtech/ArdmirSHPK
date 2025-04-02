@@ -11,7 +11,7 @@ export const getProjects = async (): Promise<Project[]> => {
   try {
     const response = await fetch('/api/projects');
     if (!response.ok) {
-      return [];
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
     if (!Array.isArray(data)) {
